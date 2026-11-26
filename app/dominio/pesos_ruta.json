@@ -1,0 +1,44 @@
+{
+  "_nota": "Pesos del motor de ruta. Se ajustan aquí sin tocar código. Las condiciones usan los mismos operadores que los requisitos.",
+  "margen_puente": 2,
+  "senales": [
+    {"id": "meta_empleo", "texto": "Quieres un empleo",
+     "si": {"campo": "meta", "op": "==", "valor": "Un empleo"},
+     "suma": {"empleabilidad": 3}},
+    {"id": "meta_negocio", "texto": "Quieres iniciar o hacer crecer un negocio",
+     "si": {"campo": "meta", "op": "==", "valor": "Iniciar o hacer crecer un negocio"},
+     "suma": {"emprendimiento": 3}},
+    {"id": "meta_aprender", "texto": "Quieres aprender algo nuevo",
+     "si": {"campo": "meta", "op": "in", "valor": ["Aprender algo nuevo", "No sé todavía"]},
+     "suma": {"capacitacion": 3}},
+    {"id": "ya_vende", "texto": "Ya vendes o tienes una idea de negocio",
+     "si": {"campo": "negocio", "op": "in", "valor": ["Tengo una idea", "Ya vendo"]},
+     "suma": {"emprendimiento": 2}},
+    {"id": "tiempo_completo", "texto": "Tienes 30 horas o más a la semana",
+     "si": {"campo": "horas_semana", "op": "==", "valor": "30 o más"},
+     "suma": {"empleabilidad": 2}},
+    {"id": "poco_tiempo", "texto": "Tienes poco tiempo o cuidas a alguien",
+     "si": {"any": [
+       {"campo": "horas_semana", "op": "in", "valor": ["Menos de 10", "10 a 15"]},
+       {"campo": "cuidados", "op": "any_not_in", "valor": ["Ninguna"]}
+     ]},
+     "suma": {"emprendimiento": 1, "capacitacion": 1}},
+    {"id": "prepa", "texto": "Terminaste la preparatoria o más",
+     "si": {"campo": "escolaridad", "op": ">=", "valor": "Preparatoria"},
+     "suma": {"empleabilidad": 1}},
+    {"id": "sin_digital", "texto": "Todavía no usas la computadora y quieres un empleo",
+     "si": {"all": [
+       {"campo": "meta", "op": "==", "valor": "Un empleo"},
+       {"campo": "habilidades", "op": "not_contains", "valor": ["Computación"]}
+     ]},
+     "suma": {"capacitacion": 2}}
+  ],
+  "_nota_puente": "Además del empate (margen_puente), se sugiere Capacitación como puente cuando hay una brecha que un curso corto resuelve.",
+  "puente_capacitacion": {
+    "texto": "Un curso corto te ayuda a dar el siguiente paso",
+    "si": {"any": [
+      {"campo": "habilidades", "op": "not_contains", "valor": ["Computación"]},
+      {"campo": "escolaridad", "op": "<=", "valor": "Secundaria"}
+    ]}
+  }
+}
