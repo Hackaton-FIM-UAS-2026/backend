@@ -29,8 +29,28 @@ def validar(r: dict) -> list[str]:
     return errores
 
 
+def cargar_empresas(sb, ruta: str = "data/empresas.json") -> dict[str, dict]:
+    """Crea o actualiza las empresas (clave: RFC). Regresa {alias: {id, estado}}."""
+    p = Path(ruta)
+    if not p.exists():
+        return {}
+    out = {}
+    for e in json.loads(p.read_text(encoding="utf-8"))["empresas"]:
+        fila = {k: e.get(k) for k in ("nombre", "rfc", "giro", "contacto_nombre", "telefono", "estado", "logo_url")}
+        hay = sb.table("empresas").select("id").eq("rfc", e["rfc"]).limit(1).execute().data
+        if hay:
+            sb.table("empresas").update(fila).eq("id", hay[0]["id"]).execute()
+            eid = hay[0]["id"]
+        else:
+            eid = sb.table("empresas").insert(fila).execute().data[0]["id"]
+        out[e["alias"]] = {"id": eid, "estado": e["estado"]}
+        print(f"✓ empresa   {e['nombre']} ({e['estado']})")
+    return out
+
+
 def main(ruta: str):
     recursos = json.loads(Path(ruta).read_text(encoding="utf-8"))
+    empresas = cargar_empresas(servicio())
     malos = {r.get("id", "?"): e for r in recursos if (e := validar(r))}
     if malos:
         for k, e in malos.items():
@@ -43,7 +63,19 @@ def main(ruta: str):
             r["embedding"] = embeddings.como_texto(v)
         else:
             sin_emb += 1
-        r.setdefault("publicada", True)
+        alias = r.pop("empresa", None)
+        # PostgREST rellena con null las llaves que falten en un upsert por lotes: todas iguales.
+        r.setdefault("etiquetas", {"pide": [], "da": [], "temas": []})
+        r.setdefault("sueldo", None)
+        r.setdefault("empresa_id", None)
+        r.setdefault("alerta_ia", None)
+        r.setdefault("estado_revision", "aprobada")
+        if alias:
+            emp = empresas[alias]
+            r["empresa_id"] = emp["id"]
+            r["publicada"] = r["estado_revision"] == "aprobada" and emp["estado"] == "aprobada"
+        else:
+            r.setdefault("publicada", r["estado_revision"] == "aprobada")
     servicio().table("recursos").upsert(recursos).execute()
     print(f"✓ {len(recursos)} recursos cargados ({len(recursos) - sin_emb} con embedding).")
     if sin_emb:

@@ -1,4 +1,4 @@
-"""Panel CEMujeres (M14) + roles y bitácora (M15).
+"""Panel SEMujeres (M14) + roles y bitácora (M15).
 
 Lecturas con el JWT de quien pide → RLS decide. Cada acceso a un expediente
 queda en bitacora_accesos. Las respuestas tienen la forma de frontend/src/data/admin.js.
@@ -26,7 +26,7 @@ ESPECIALISTA = con_rol(*ESPECIALISTAS)
 CUALQUIERA = con_rol(*PERSONAL)
 COORD = con_rol("coordinacion")
 
-TIPO_OUT = {"juridica": "Jurídica", "psicologica": "Psicológica", "ambas": "Ambas"}
+TIPO_OUT = {"juridica": "Jurídica", "psicologica": "Psicológica", "ambas": "Ambas", "no_se": "Por definir"}
 ESTADOS_USUARIA = ["Nueva", "Inscrita", "En curso", "Contratada", "Curso terminado", "Negocio registrado", "Baja"]
 # Campos que se muestran en la ficha (como en data/admin.js)
 CAMPOS_FICHA = ["edad", "escolaridad", "horas_semana", "horario", "cuidados", "dispositivo", "negocio",
@@ -84,6 +84,7 @@ def ficha(usuaria_id: str, s: Sesion = Depends(ASESORA)):
             raise HTTPException(404, "Usuaria no encontrada")
         exp = db.from_("expedientes").select("usuaria_id,campos,ruta,version,conflictos").eq("usuaria_id", usuaria_id).execute().data
         evs = db.from_("expediente_eventos").select("texto,fuente,created_at,version") \
+            .in_("area", ["general", "economico"]).neq("fuente", "nota") \
             .eq("usuaria_id", usuaria_id).order("created_at", desc=True).limit(50).execute().data
         recs = db.from_("recursos_usuaria").select("recurso_id,estado,updated_at,recursos(titulo,tipo)") \
             .eq("usuaria_id", usuaria_id).execute().data
@@ -101,27 +102,27 @@ class SituacionIn(BaseModel):
     ruta: Literal["empleabilidad", "emprendimiento", "capacitacion"] | None = None
     puente: Literal["empleabilidad", "emprendimiento", "capacitacion"] | None = None
     motivo: str | None = Field(default=None, max_length=300)
-    campos: dict[str, Any] | None = None   # datos que la asesora confirmó (fuente personal_cemujeres)
+    campos: dict[str, Any] | None = None   # datos que la asesora confirmó (fuente personal_semujeres)
 
 
 @router.post("/usuarias/{usuaria_id}/situacion")
 def actualizar_situacion(usuaria_id: str, body: SituacionIn, s: Sesion = Depends(ASESORA)):
-    """'Actualizar situación': entra al expediente con fuente personal_cemujeres y la versión sube.
+    """'Actualizar situación': entra al expediente con fuente personal_semujeres y la versión sube.
     Si choca con algo que dijo ella, no se sobrescribe: queda en `conflictos`."""
     if body.ruta and not body.motivo:
         raise HTTPException(422, "Para cambiar la ruta escribe el motivo")
     nuevos = {"estado_programa": body.estado, **(body.campos or {})}
-    exp = sv.aplicar_campos(s.token, usuaria_id, nuevos, "personal_cemujeres", autor=s.user_id)
+    exp = sv.aplicar_campos(s.token, usuaria_id, nuevos, "personal_semujeres", autor=s.user_id)
     if body.ruta:
         ruta = {**(exp.get("ruta") or {}),
                 "manual": {"principal": body.ruta, "puente": body.puente, "motivo": body.motivo,
                            "autor": s.user_id, "fecha": sv.ahora_iso()}}
         servicio().table("expedientes").update({"ruta": ruta}).eq("usuaria_id", usuaria_id).execute()
-        sv.evento(usuaria_id, f"Asesora cambió la ruta a {body.ruta} — {body.motivo}", "personal_cemujeres",
+        sv.evento(usuaria_id, f"Asesora cambió la ruta a {body.ruta} — {body.motivo}", "personal_semujeres",
                   s.user_id, exp["version"])
     servicio().table("perfiles").update({"estado_seguimiento": body.estado}).eq("usuaria_id", usuaria_id).execute()
     sv.evento(usuaria_id, f"Asesora registró: {body.estado.lower()}{f' — {body.nota}' if body.nota else ''}",
-              "personal_cemujeres", s.user_id, exp["version"])
+              "personal_semujeres", s.user_id, exp["version"])
     bitacora(s.user_id, s.rol, "actualizar", "expedientes", usuaria_id, usuaria_id)
     return ficha(usuaria_id, s)
 
@@ -136,7 +137,7 @@ class ContactoIn(BaseModel):
 def registrar_contacto(usuaria_id: str, body: ContactoIn, s: Sesion = Depends(ASESORA)):
     exp = sv.leer_expediente(s.token, usuaria_id)  # confirma permiso vía RLS
     texto = f"Contacto por {body.medio.lower()}: {body.resultado.lower()}{f' — {body.nota}' if body.nota else ''}"
-    sv.evento(usuaria_id, texto, "personal_cemujeres", s.user_id, exp["version"])
+    sv.evento(usuaria_id, texto, "personal_semujeres", s.user_id, exp["version"])
     with como(s.token) as db:
         p = db.from_("perfiles").select("estado_seguimiento").eq("usuaria_id", usuaria_id).execute().data
     if p and p[0]["estado_seguimiento"] == "Nueva" and body.resultado == "Contestó":

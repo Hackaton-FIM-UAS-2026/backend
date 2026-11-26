@@ -50,7 +50,7 @@ ENTREVISTA = [
      "opciones": ["Sí", "No"]},
 ]
 
-# Campos que solo registra el personal (fuente personal_cemujeres).
+# Campos que solo registra el personal (fuente personal_semujeres).
 PERSONAL = [
     {"campo": "estado_programa", "etiqueta": "Situación en el programa", "tipo": "texto"},
 ]

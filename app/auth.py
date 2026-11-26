@@ -20,6 +20,8 @@ class Sesion:
     correo: str | None
     rol: str | None          # None = usuaria; si no, rol del personal
     nombre_personal: str | None = None
+    empresa_id: str | None = None        # si la cuenta es de una empresa
+    empresa_estado: str | None = None    # pendiente | aprobada | rechazada
 
 
 def _validar(token: str) -> Sesion:
@@ -36,8 +38,12 @@ def _validar(token: str) -> Sesion:
     fila = (servicio().table("personal").select("rol,nombre,activo")
             .eq("user_id", user.id).limit(1).execute().data)
     rol = fila[0]["rol"] if fila and fila[0]["activo"] else None
+    emp = [] if rol else (servicio().table("empresas").select("id,estado")
+                          .eq("user_id", user.id).limit(1).execute().data)
     s = Sesion(user_id=user.id, token=token, correo=user.email, rol=rol,
-               nombre_personal=fila[0]["nombre"] if fila else None)
+               nombre_personal=fila[0]["nombre"] if fila else None,
+               empresa_id=emp[0]["id"] if emp else None,
+               empresa_estado=emp[0]["estado"] if emp else None)
     if len(_CACHE) > 5000:
         _CACHE.clear()
     _CACHE[token] = (ahora + _TTL, s)
@@ -51,8 +57,14 @@ def sesion(authorization: str | None = Header(default=None)) -> Sesion:
 
 
 def usuaria(s: Sesion = Depends(sesion)) -> Sesion:
-    if s.rol:
+    if s.rol or s.empresa_id:
         raise HTTPException(403, "Esta ruta es para usuarias")
+    return s
+
+
+def empresa(s: Sesion = Depends(sesion)) -> Sesion:
+    if not s.empresa_id:
+        raise HTTPException(403, "Esta ruta es para empresas")
     return s
 
 
@@ -64,5 +76,8 @@ def con_rol(*roles: str):
     return dep
 
 
-PERSONAL = ("asesora_economica", "especialista_juridica", "especialista_psicologica", "coordinacion")
+PERSONAL = ("asesora_economica", "especialista_juridica", "especialista_psicologica", "coordinacion",
+            "trabajo_social", "recepcion")
+TRABAJO_SOCIAL = ("trabajo_social",)
+RECEPCION = ("recepcion",)
 ESPECIALISTAS = ("especialista_juridica", "especialista_psicologica")

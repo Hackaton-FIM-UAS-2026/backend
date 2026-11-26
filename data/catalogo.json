@@ -33,7 +33,8 @@
     ],
     "descripcion": "Aprende a separar el dinero de tu negocio y de tu casa, calcular tus precios y llevar tus cuentas desde el celular.",
     "url_accion": "#",
-    "verificado_el": "2026-11"
+    "verificado_el": "2026-11",
+    "alerta_ia": null
   },
   {
     "id": "r2",
@@ -82,7 +83,8 @@
     ],
     "descripcion": "Apoyo económico y asesoría para mujeres que venden desde su casa: comida, costura, productos por catálogo.",
     "url_accion": "#",
-    "verificado_el": "2026-11"
+    "verificado_el": "2026-11",
+    "alerta_ia": null
   },
   {
     "id": "r3",
@@ -119,7 +121,8 @@
     ],
     "descripcion": "Primer empleo en atención a clientes en tienda. Capacitación pagada la primera semana.",
     "url_accion": "#",
-    "verificado_el": "2026-11"
+    "verificado_el": "2026-11",
+    "alerta_ia": null
   },
   {
     "id": "r4",
@@ -151,7 +154,8 @@
     ],
     "descripcion": "Aprende a usar WhatsApp Business, hacer videollamadas y llenar formularios en línea, a tu ritmo.",
     "url_accion": "#",
-    "verificado_el": "2026-11"
+    "verificado_el": "2026-11",
+    "alerta_ia": null
   },
   {
     "id": "r5",
@@ -198,7 +202,8 @@
     ],
     "descripcion": "Turno vespertino con prestaciones de ley. Capacitación pagada la primera semana.",
     "url_accion": "#",
-    "verificado_el": "2026-11"
+    "verificado_el": "2026-11",
+    "alerta_ia": null
   },
   {
     "id": "r6",
@@ -247,7 +252,8 @@
     ],
     "descripcion": "Preparación de alimentos y apoyo en cocina. Horario fijo de mañana.",
     "url_accion": "#",
-    "verificado_el": "2026-11"
+    "verificado_el": "2026-11",
+    "alerta_ia": null
   },
   {
     "id": "r7",
@@ -291,7 +297,8 @@
     ],
     "descripcion": "Atención a pacientes, agenda y cobro. Se busca trato amable y orden.",
     "url_accion": "#",
-    "verificado_el": "2026-11"
+    "verificado_el": "2026-11",
+    "alerta_ia": null
   },
   {
     "id": "r8",
@@ -330,7 +337,8 @@
     ],
     "descripcion": "Confección de uniformes escolares y de empresa. Pago por semana.",
     "url_accion": "#",
-    "verificado_el": "2026-11"
+    "verificado_el": "2026-11",
+    "alerta_ia": null
   },
   {
     "id": "r9",
@@ -379,7 +387,8 @@
     ],
     "descripcion": "Acompañamiento y cuidados básicos a domicilio. Turnos que se acomodan a tu horario.",
     "url_accion": "#",
-    "verificado_el": "2026-11"
+    "verificado_el": "2026-11",
+    "alerta_ia": null
   },
   {
     "id": "r10",
@@ -423,7 +432,8 @@
     ],
     "descripcion": "Responder mensajes de clientes desde casa. Se requiere internet estable.",
     "url_accion": "#",
-    "verificado_el": "2026-11"
+    "verificado_el": "2026-11",
+    "alerta_ia": null
   },
   {
     "id": "r11",
@@ -453,7 +463,8 @@
     ],
     "descripcion": "Te ayudan a armar tu solicitud y te avisan de vacantes que van contigo.",
     "url_accion": "#",
-    "verificado_el": "2026-11"
+    "verificado_el": "2026-11",
+    "alerta_ia": null
   },
   {
     "id": "r12",
@@ -474,7 +485,8 @@
     "requisitos": [],
     "descripcion": "Tres sesiones cortas desde el celular: tu currículum, la entrevista y tus derechos laborales.",
     "url_accion": "#",
-    "verificado_el": "2026-11"
+    "verificado_el": "2026-11",
+    "alerta_ia": null
   },
   {
     "id": "r13",
@@ -530,7 +542,8 @@
     ],
     "descripcion": "Crédito de 5,000 a 30,000 pesos para equipo o mercancía, con pagos semanales.",
     "url_accion": "#",
-    "verificado_el": "2026-11"
+    "verificado_el": "2026-11",
+    "alerta_ia": null
   },
   {
     "id": "r14",
@@ -582,7 +595,8 @@
     ],
     "descripcion": "Entrega de herramientas o equipo (horno, máquina de coser, refrigerador) para iniciar o crecer.",
     "url_accion": "#",
-    "verificado_el": "2026-11"
+    "verificado_el": "2026-11",
+    "alerta_ia": null
   },
   {
     "id": "r15",
@@ -624,7 +638,8 @@
     ],
     "descripcion": "Ocho semanas con asesoría para tu plan de negocio, precios y ventas.",
     "url_accion": "#",
-    "verificado_el": "2026-11"
+    "verificado_el": "2026-11",
+    "alerta_ia": null
   },
   {
     "id": "r16",
@@ -656,7 +671,8 @@
     ],
     "descripcion": "Fotos con el celular, catálogo de WhatsApp y cómo atender pedidos.",
     "url_accion": "#",
-    "verificado_el": "2026-11"
+    "verificado_el": "2026-11",
+    "alerta_ia": null
   },
   {
     "id": "r17",
@@ -689,7 +705,8 @@
     ],
     "descripcion": "Te acompañan a sacar tu RFC y a emitir tu primera factura en el régimen más simple.",
     "url_accion": "#",
-    "verificado_el": "2026-11"
+    "verificado_el": "2026-11",
+    "alerta_ia": null
   },
   {
     "id": "r18",
@@ -719,7 +736,8 @@
     ],
     "descripcion": "Un espacio sin costo para vender tus productos un fin de semana al mes.",
     "url_accion": "#",
-    "verificado_el": "2026-11"
+    "verificado_el": "2026-11",
+    "alerta_ia": null
   },
   {
     "id": "r19",
@@ -750,7 +768,8 @@
     ],
     "descripcion": "Constancia oficial para vender comida. Dos mañanas.",
     "url_accion": "#",
-    "verificado_el": "2026-11"
+    "verificado_el": "2026-11",
+    "alerta_ia": null
   },
   {
     "id": "r20",
@@ -789,7 +808,8 @@
     ],
     "descripcion": "Termina tus estudios a tu ritmo y recibe certificado oficial.",
     "url_accion": "#",
-    "verificado_el": "2026-11"
+    "verificado_el": "2026-11",
+    "alerta_ia": null
   },
   {
     "id": "r21",
@@ -818,7 +838,8 @@
     ],
     "descripcion": "Estudia la prepa desde el celular. Exámenes en sede cercana.",
     "url_accion": "#",
-    "verificado_el": "2026-11"
+    "verificado_el": "2026-11",
+    "alerta_ia": null
   },
   {
     "id": "r22",
@@ -849,7 +870,8 @@
     ],
     "descripcion": "Hojas de cálculo, fórmulas sencillas e inventarios. Con constancia.",
     "url_accion": "#",
-    "verificado_el": "2026-11"
+    "verificado_el": "2026-11",
+    "alerta_ia": null
   },
   {
     "id": "r23",
@@ -880,7 +902,8 @@
     ],
     "descripcion": "Patronaje, máquina recta y arreglos de ropa. Material incluido.",
     "url_accion": "#",
-    "verificado_el": "2026-11"
+    "verificado_el": "2026-11",
+    "alerta_ia": null
   },
   {
     "id": "r24",
@@ -933,6 +956,509 @@
     ],
     "descripcion": "Apoyo mensual para pasajes mientras estudias un curso o la escuela.",
     "url_accion": "#",
-    "verificado_el": "2026-11"
+    "verificado_el": "2026-11",
+    "alerta_ia": null
+  },
+  {
+    "id": "v-barista",
+    "titulo": "Barista",
+    "proveedor": "Empático coffee bar",
+    "empresa": "empatico",
+    "tipo": "vacante",
+    "rutas": [
+      "empleabilidad"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Mañanas",
+    "horas_semana": 30,
+    "costo": "Sueldo",
+    "sueldo": "$7,500 al mes",
+    "ubicacion": "Los Mochis",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": "2026-12-20",
+    "requisitos": [
+      {
+        "campo": "edad",
+        "op": ">=",
+        "valor": "18 a 24",
+        "duro": true,
+        "label": "Ser mayor de 18"
+      },
+      {
+        "campo": "habilidades",
+        "op": "contains_any",
+        "valor": [
+          "Atención al cliente",
+          "Cocina",
+          "Ventas"
+        ],
+        "duro": false,
+        "label": "Gusto por atender a clientes"
+      }
+    ],
+    "descripcion": "Preparar café y bebidas, atender la barra y mantener el área limpia. Te enseñamos barismo la primera semana.",
+    "url_accion": "#",
+    "verificado_el": "2026-11",
+    "estado_revision": "aprobada",
+    "etiquetas": {
+      "pide": [
+        "edad",
+        "habilidades"
+      ],
+      "da": [],
+      "temas": [
+        "café",
+        "atención al cliente",
+        "alimentos"
+      ]
+    },
+    "alerta_ia": null
+  },
+  {
+    "id": "v-cajera-empatico",
+    "titulo": "Cajera",
+    "proveedor": "Empático coffee bar",
+    "empresa": "empatico",
+    "tipo": "vacante",
+    "rutas": [
+      "empleabilidad"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Tardes",
+    "horas_semana": 30,
+    "costo": "Sueldo",
+    "sueldo": "$7,800 al mes",
+    "ubicacion": "Los Mochis",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": "2026-12-31",
+    "requisitos": [
+      {
+        "campo": "escolaridad",
+        "op": ">=",
+        "valor": "Secundaria",
+        "duro": true,
+        "label": "Secundaria terminada"
+      }
+    ],
+    "descripcion": "Cobro en caja, corte del día y atención en mostrador.",
+    "url_accion": "#",
+    "verificado_el": "2026-11",
+    "estado_revision": "pendiente",
+    "etiquetas": {
+      "pide": [
+        "escolaridad"
+      ],
+      "da": [],
+      "temas": [
+        "atención al cliente",
+        "ventas"
+      ]
+    },
+    "alerta_ia": null
+  },
+  {
+    "id": "v-mesera",
+    "titulo": "Mesera",
+    "proveedor": "Medusa Ristorante",
+    "empresa": "medusa",
+    "tipo": "vacante",
+    "rutas": [
+      "empleabilidad"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Tardes",
+    "horas_semana": 36,
+    "costo": "Sueldo",
+    "sueldo": "$6,800 al mes + propinas",
+    "ubicacion": "Los Mochis",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": "2026-12-15",
+    "requisitos": [
+      {
+        "campo": "edad",
+        "op": ">=",
+        "valor": "18 a 24",
+        "duro": true,
+        "label": "Ser mayor de 18"
+      },
+      {
+        "campo": "tiene_experiencia",
+        "op": "==",
+        "valor": "Sí",
+        "duro": false,
+        "label": "Experiencia atendiendo mesas (deseable)"
+      }
+    ],
+    "descripcion": "Atender mesas, tomar órdenes y cuidar que cada cliente se vaya contento.",
+    "url_accion": "#",
+    "verificado_el": "2026-11",
+    "estado_revision": "aprobada",
+    "etiquetas": {
+      "pide": [
+        "edad",
+        "tiene_experiencia"
+      ],
+      "da": [],
+      "temas": [
+        "alimentos",
+        "atención al cliente"
+      ]
+    },
+    "alerta_ia": null
+  },
+  {
+    "id": "v-aux-cocina",
+    "titulo": "Auxiliar de cocina",
+    "proveedor": "Medusa Ristorante",
+    "empresa": "medusa",
+    "tipo": "vacante",
+    "rutas": [
+      "empleabilidad"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Noches",
+    "horas_semana": 36,
+    "costo": "Sueldo",
+    "sueldo": "$7,200 al mes",
+    "ubicacion": "Los Mochis",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": "2026-12-15",
+    "requisitos": [
+      {
+        "campo": "habilidades",
+        "op": "contains",
+        "valor": [
+          "Cocina"
+        ],
+        "duro": false,
+        "label": "Saber cocinar"
+      },
+      {
+        "campo": "documentos",
+        "op": "contains",
+        "valor": [
+          "INE"
+        ],
+        "duro": true,
+        "label": "INE vigente"
+      }
+    ],
+    "descripcion": "Apoyo en preparación de alimentos, limpieza de cocina e inventario.",
+    "url_accion": "#",
+    "verificado_el": "2026-11",
+    "estado_revision": "aprobada",
+    "etiquetas": {
+      "pide": [
+        "habilidades",
+        "documentos"
+      ],
+      "da": [],
+      "temas": [
+        "alimentos",
+        "cocina"
+      ]
+    },
+    "alerta_ia": null
+  },
+  {
+    "id": "v-aux-contable",
+    "titulo": "Auxiliar contable",
+    "proveedor": "Despacho Ruiz y Asociados",
+    "empresa": "despacho-ruiz",
+    "tipo": "vacante",
+    "rutas": [
+      "empleabilidad"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Mañanas",
+    "horas_semana": 30,
+    "costo": "Sueldo",
+    "sueldo": "$8,500 al mes",
+    "ubicacion": "Los Mochis",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": "2026-12-31",
+    "requisitos": [
+      {
+        "campo": "escolaridad",
+        "op": ">=",
+        "valor": "Secundaria",
+        "duro": true,
+        "label": "Secundaria terminada"
+      },
+      {
+        "campo": "habilidad_excel",
+        "op": ">=",
+        "valor": "Básico",
+        "duro": false,
+        "label": "Saber Excel básico"
+      },
+      {
+        "campo": "tiene_rfc",
+        "op": "==",
+        "valor": "Sí",
+        "duro": false,
+        "label": "Tener RFC"
+      },
+      {
+        "campo": "documentos",
+        "op": "contains",
+        "valor": [
+          "INE"
+        ],
+        "duro": false,
+        "label": "INE vigente"
+      }
+    ],
+    "descripcion": "Captura de facturas, archivo y apoyo en declaraciones de clientes del despacho.",
+    "url_accion": "#",
+    "verificado_el": "2026-11",
+    "estado_revision": "aprobada",
+    "etiquetas": {
+      "pide": [
+        "escolaridad",
+        "habilidad_excel",
+        "tiene_rfc",
+        "documentos"
+      ],
+      "da": [],
+      "temas": [
+        "contabilidad",
+        "oficina"
+      ]
+    },
+    "alerta_ia": null
+  },
+  {
+    "id": "v-edecan",
+    "titulo": "Edecán para eventos",
+    "proveedor": "Promociones Del Valle",
+    "empresa": "promociones-valle",
+    "tipo": "vacante",
+    "rutas": [
+      "empleabilidad"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Fines de semana",
+    "horas_semana": 20,
+    "costo": "Sueldo",
+    "sueldo": "$25,000 a la semana",
+    "ubicacion": "Guadalajara, Jal. (viaje pagado)",
+    "municipios": [],
+    "fecha_cierre": "2026-12-10",
+    "requisitos": [
+      {
+        "campo": "edad",
+        "op": ">=",
+        "valor": "18 a 24",
+        "duro": true,
+        "label": "Ser mayor de 18"
+      }
+    ],
+    "descripcion": "Buscamos señoritas para eventos. Enviar fotos de cuerpo completo. Viaje pagado y hospedaje incluido.",
+    "url_accion": "#",
+    "verificado_el": "2026-11",
+    "estado_revision": "pendiente",
+    "etiquetas": {
+      "pide": [
+        "edad"
+      ],
+      "da": [],
+      "temas": [
+        "eventos"
+      ]
+    },
+    "alerta_ia": "Sueldo muy por arriba de lo normal ($25,000 a la semana); Trabajo fuera de Sinaloa (Guadalajara, Jal.); Ofrecen viaje pagado; Ofrecen hospedaje; Buscan «señoritas» (posible sesgo); Piden fotos de cuerpo completo"
+  },
+  {
+    "id": "c-excel",
+    "titulo": "Excel básico desde tu celular",
+    "proveedor": "Ejemplo — Capacitación en línea",
+    "tipo": "curso",
+    "rutas": [
+      "capacitacion",
+      "empleabilidad"
+    ],
+    "modalidad": "En línea",
+    "horario": "Flexible",
+    "horas_semana": 3,
+    "costo": "Gratis",
+    "ubicacion": "En línea",
+    "municipios": [],
+    "fecha_cierre": "2026-12-31",
+    "requisitos": [],
+    "descripcion": "Aprende a hacer tablas, sumas y listas en Excel, a tu ritmo y desde el celular. 4 semanas.",
+    "url_accion": "#",
+    "verificado_el": "2026-11",
+    "estado_revision": "aprobada",
+    "etiquetas": {
+      "pide": [],
+      "da": [
+        "habilidad_excel"
+      ],
+      "temas": [
+        "oficina",
+        "contabilidad",
+        "computación"
+      ]
+    },
+    "alerta_ia": null
+  },
+  {
+    "id": "c-sat",
+    "titulo": "Tu RFC y facturas paso a paso",
+    "proveedor": "Ejemplo — Taller SAT Los Mochis",
+    "tipo": "curso",
+    "rutas": [
+      "capacitacion",
+      "emprendimiento",
+      "empleabilidad"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Fines de semana",
+    "horas_semana": 3,
+    "costo": "Gratis",
+    "ubicacion": "Los Mochis",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": "2026-12-05",
+    "requisitos": [
+      {
+        "campo": "documentos",
+        "op": "contains",
+        "valor": [
+          "CURP"
+        ],
+        "duro": false,
+        "label": "Llevar tu CURP"
+      }
+    ],
+    "descripcion": "Sacamos tu RFC juntas y aprendes a hacer y revisar facturas. Sábado 5 de diciembre.",
+    "url_accion": "#",
+    "verificado_el": "2026-11",
+    "estado_revision": "aprobada",
+    "etiquetas": {
+      "pide": [
+        "documentos"
+      ],
+      "da": [
+        "tiene_rfc"
+      ],
+      "temas": [
+        "contabilidad",
+        "negocio"
+      ]
+    },
+    "alerta_ia": null
+  },
+  {
+    "id": "c-barismo",
+    "titulo": "Barismo básico",
+    "proveedor": "Ejemplo — Escuela de café",
+    "tipo": "curso",
+    "rutas": [
+      "capacitacion",
+      "empleabilidad"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Fines de semana",
+    "horas_semana": 4,
+    "costo": "Gratis",
+    "ubicacion": "Los Mochis",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": "2026-12-20",
+    "requisitos": [],
+    "descripcion": "Espresso, leche y bebidas básicas en 4 sábados.",
+    "url_accion": "#",
+    "verificado_el": "2026-11",
+    "estado_revision": "aprobada",
+    "etiquetas": {
+      "pide": [],
+      "da": [
+        "tiene_experiencia"
+      ],
+      "temas": [
+        "café",
+        "alimentos"
+      ]
+    },
+    "alerta_ia": null
+  },
+  {
+    "id": "c-higiene",
+    "titulo": "Manejo higiénico de alimentos",
+    "proveedor": "Ejemplo — Salud municipal",
+    "tipo": "curso",
+    "rutas": [
+      "capacitacion",
+      "empleabilidad",
+      "emprendimiento"
+    ],
+    "modalidad": "En línea",
+    "horario": "Flexible",
+    "horas_semana": 2,
+    "costo": "Gratis",
+    "ubicacion": "En línea",
+    "municipios": [],
+    "fecha_cierre": "2026-12-31",
+    "requisitos": [],
+    "descripcion": "Constancia oficial para trabajar con alimentos. 6 horas en total.",
+    "url_accion": "#",
+    "verificado_el": "2026-11",
+    "estado_revision": "aprobada",
+    "etiquetas": {
+      "pide": [],
+      "da": [],
+      "temas": [
+        "alimentos",
+        "cocina"
+      ]
+    },
+    "alerta_ia": null
+  },
+  {
+    "id": "c-atencion",
+    "titulo": "Atención al cliente",
+    "proveedor": "Ejemplo — Capacitación en línea",
+    "tipo": "curso",
+    "rutas": [
+      "capacitacion",
+      "empleabilidad"
+    ],
+    "modalidad": "En línea",
+    "horario": "Flexible",
+    "horas_semana": 2,
+    "costo": "Gratis",
+    "ubicacion": "En línea",
+    "municipios": [],
+    "fecha_cierre": "2026-12-31",
+    "requisitos": [],
+    "descripcion": "Cómo atender, resolver quejas y vender mejor. 3 semanas.",
+    "url_accion": "#",
+    "verificado_el": "2026-11",
+    "estado_revision": "aprobada",
+    "etiquetas": {
+      "pide": [],
+      "da": [
+        "tiene_experiencia"
+      ],
+      "temas": [
+        "atención al cliente",
+        "ventas"
+      ]
+    },
+    "alerta_ia": null
   }
 ]

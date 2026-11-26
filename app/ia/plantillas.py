@@ -1,6 +1,6 @@
 """Plantillas FIJAS del flujo sensible (Claude solo clasifica y elige, no redacta).
 
-A validar con CEMujeres antes de usarse con usuarias reales.
+A validar con SEMujeres antes de usarse con usuarias reales.
 """
 import re
 import unicodedata
@@ -18,7 +18,9 @@ _JURIDICA = ["mi pareja no me deja", "no me deja trabajar", "me golpea", "me peg
 _PSICO = ["ya no puedo mas", "no puedo mas", "me siento sola", "no quiero vivir", "estoy desesperada",
           "tengo mucho miedo", "ansiedad", "depresion"]
 _INMEDIATA = ["me va a matar", "estoy en peligro", "me quiere matar", "ahorita me esta", "esta afuera de mi casa",
-              "no quiero vivir", "me voy a matar", "quitarme la vida"]
+              "no quiero vivir", "me voy a matar", "quitarme la vida",
+              "me esta amenazando", "me esta pegando", "me esta golpeando", "me va a pegar", "me quiere pegar",
+              "me esta siguiendo", "no me deja salir", "tiene un arma", "tiene un cuchillo"]
 
 CONTACTO_EMERGENCIA = {
     "telefono_911": "911",
@@ -27,6 +29,9 @@ CONTACTO_EMERGENCIA = {
     # PENDIENTE (líder de producto): teléfono y horario oficiales, tomados del sitio de la Secretaría.
     "secretaria_mujeres_sinaloa": {"nombre": "Área jurídica · Secretaría de las Mujeres de Sinaloa",
                                    "telefono": None, "horario": None},
+    # Línea de atención real de SEMujeres Ahome (confirmada por el equipo, 26 nov 2026).
+    "semujeres_24h": {"nombre": "Línea de atención · SEMujeres Ahome", "telefono": "668 102 5080",
+                      "tel": "+526681025080", "horario": "24 horas"},
 }
 
 

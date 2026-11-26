@@ -15,7 +15,7 @@
 create extension if not exists vector with schema extensions;
 
 -- ---------------------------------------------------------------------
--- Personal de CEMujeres y su rol
+-- Personal de SEMujeres y su rol
 -- ---------------------------------------------------------------------
 create table public.personal (
   user_id    uuid primary key references auth.users (id) on delete cascade,

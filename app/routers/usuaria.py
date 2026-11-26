@@ -112,15 +112,17 @@ def seguimiento(s: Sesion = Depends(usuaria)):
     """'Mi avance': versión, cuántos datos, línea de tiempo y estado de sus recursos."""
     exp = sv.leer_expediente(s.token, s.user_id)
     with como(s.token) as db:
+        # Nunca lo confidencial (canalizaciones, notas): un celular puede ser compartido
         evs = db.from_("expediente_eventos").select("texto,fuente,created_at") \
-            .eq("usuaria_id", s.user_id).order("created_at", desc=True).limit(30).execute().data
+            .eq("usuaria_id", s.user_id).in_("area", ["general", "economico"]).neq("fuente", "nota") \
+            .order("created_at", desc=True).limit(30).execute().data
         mios = db.from_("recursos_usuaria").select("recurso_id,estado,updated_at,recursos(titulo,tipo)") \
             .eq("usuaria_id", s.user_id).execute().data
     n = sum(1 for c in (exp.get("campos") or {}) if c in diccionario.CAMPOS and diccionario.CAMPOS[c]["tipo"] != "texto")
     linea = []
     for e in evs:
         texto = e["texto"]
-        if e["fuente"] == "personal_cemujeres":
+        if e["fuente"] == "personal_semujeres":
             texto = texto.replace("Asesora registró:", "Tu asesora registró:")
         linea.append({"fecha": sv.fecha_corta(e["created_at"]), "texto": texto, "fuente": e["fuente"]})
     return {

@@ -71,7 +71,7 @@ def aplicar_campos(token: str, usuaria_id: str, nuevos: dict, fuente: str,
         for c in res["conflictos_nuevos"]:
             filas.append({"usuaria_id": usuaria_id, "version": nuevo["version"], "campo": c["campo"],
                           "valor_anterior": c["valor_usuaria"], "valor_nuevo": c["valor_personal"],
-                          "fuente": "personal_cemujeres", "autor": autor,
+                          "fuente": "personal_semujeres", "autor": autor,
                           "texto": f"Para revisar con ella: {diccionario.etiqueta(c['campo']).lower()}"})
         if filas:
             servicio().table("expediente_eventos").insert(filas).execute()
@@ -132,7 +132,8 @@ def formato_ruta(ruta: dict, explicacion: str | None = None) -> dict:
 
 # ============================================================ catálogo
 CAMPOS_RECURSO = ("id,titulo,proveedor,tipo,rutas,modalidad,horario,horas_semana,costo,ubicacion,municipios,"
-                  "fecha_cierre,requisitos,descripcion,url_accion,verificado_el,publicada,creada_el")
+                  "fecha_cierre,requisitos,descripcion,url_accion,verificado_el,publicada,creada_el,"
+                  "sueldo,etiquetas,estado_revision,empresa_id")
 
 
 def leer_catalogo(token: str | None = None) -> list[dict]:

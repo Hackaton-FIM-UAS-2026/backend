@@ -14,7 +14,39 @@
       "especialista_psicologica"
     ],
     "coordinacion": [
-      "Coordinación CEMujeres",
+      "Coordinación SEMujeres",
+      "coordinacion"
+    ],
+    "trabajosocial": [
+      "Laura Méndez",
+      "trabajo_social"
+    ],
+    "recepcion": [
+      "Rocío Soto",
+      "recepcion"
+    ],
+    "asesora2": [
+      "Carmen Vega",
+      "asesora_economica"
+    ],
+    "trabajosocial2": [
+      "Patricia Ríos",
+      "trabajo_social"
+    ],
+    "juridica2": [
+      "Lic. Daniela Ochoa",
+      "especialista_juridica"
+    ],
+    "psicologica2": [
+      "Psic. Andrea Félix",
+      "especialista_psicologica"
+    ],
+    "recepcion2": [
+      "Martha Gil",
+      "recepcion"
+    ],
+    "coordinacion2": [
+      "Coordinación adjunta SEMujeres",
       "coordinacion"
     ]
   },
@@ -53,7 +85,9 @@
         ]
       },
       "acciones": {},
-      "eventos": []
+      "eventos": [],
+      "curp": "KEMU900114MSLBCR00",
+      "colonia": "Centro"
     },
     {
       "alias": "lucia",
@@ -91,7 +125,9 @@
         ]
       },
       "acciones": {},
-      "eventos": []
+      "eventos": [],
+      "curp": "DLSB910215MSLQGB01",
+      "colonia": "Jiquilpan"
     },
     {
       "alias": "rosa",
@@ -131,7 +167,9 @@
       },
       "eventos": [
         "Se inscribió a alfabetización digital"
-      ]
+      ],
+      "curp": "CNNC920314MSLHCR02",
+      "colonia": "Las Fuentes"
     },
     {
       "alias": "karla",
@@ -176,7 +214,9 @@
       "eventos": [
         "Terminó el taller de currículum",
         "Asesora registró: contratada como cajera"
-      ]
+      ],
+      "curp": "NBSD930415MSLHUU03",
+      "colonia": "Scally"
     },
     {
       "alias": "daniela",
@@ -216,7 +256,9 @@
       "acciones": {
         "r15": "guardado"
       },
-      "eventos": []
+      "eventos": [],
+      "curp": "SBSS940514MSLMBH04",
+      "colonia": "Bienestar"
     },
     {
       "alias": "patricia",
@@ -256,7 +298,9 @@
       },
       "eventos": [
         "Terminó el curso de manejo de alimentos"
-      ]
+      ],
+      "curp": "BREJ950615MSLNER05",
+      "colonia": "Infonavit Macapule"
     },
     {
       "alias": "guadalupe",
@@ -304,7 +348,9 @@
       "eventos": [
         "Sacó su RFC con la asesoría fiscal",
         "Solicitó el microcrédito"
-      ]
+      ],
+      "curp": "DSJR960714MSLVFD06",
+      "colonia": "Centro"
     },
     {
       "alias": "fernanda",
@@ -345,7 +391,9 @@
       },
       "eventos": [
         "Se inscribió a la preparatoria abierta"
-      ]
+      ],
+      "curp": "SSUG970815MSLLDR07",
+      "colonia": "Jiquilpan"
     },
     {
       "alias": "teresa",
@@ -385,7 +433,9 @@
       },
       "eventos": [
         "Empezó la secundaria para adultas"
-      ]
+      ],
+      "curp": "WCSB980914MSLTGP08",
+      "colonia": "Las Fuentes"
     },
     {
       "alias": "alejandra",
@@ -427,7 +477,9 @@
         "r10": "aplicado",
         "r22": "inscrita"
       },
-      "eventos": []
+      "eventos": [],
+      "curp": "VRNY990115MSLKOS09",
+      "colonia": "Scally"
     },
     {
       "alias": "yolanda",
@@ -464,7 +516,9 @@
         ]
       },
       "acciones": {},
-      "eventos": []
+      "eventos": [],
+      "curp": "OLJH900214MSLZFW00",
+      "colonia": "Bienestar"
     },
     {
       "alias": "brenda",
@@ -503,7 +557,9 @@
       },
       "eventos": [
         "Se inscribió al taller de ventas por WhatsApp"
-      ]
+      ],
+      "curp": "YHCS910315MSLJQP01",
+      "colonia": "Infonavit Macapule"
     },
     {
       "alias": "silvia",
@@ -542,7 +598,9 @@
       "acciones": {},
       "eventos": [
         "Asesora registró: baja por falta de tiempo"
-      ]
+      ],
+      "curp": "KXOJ920414MSLTCD02",
+      "colonia": "Centro"
     },
     {
       "alias": "claudia",
@@ -581,7 +639,9 @@
       },
       "eventos": [
         "Asesora registró: contratada en taller de uniformes"
-      ]
+      ],
+      "curp": "QNFY930515MSLKEP03",
+      "colonia": "Jiquilpan"
     },
     {
       "alias": "monica",
@@ -619,7 +679,9 @@
         "r14": "aplicado",
         "r19": "inscrita"
       },
-      "eventos": []
+      "eventos": [],
+      "curp": "NBVC940614MSLYRS04",
+      "colonia": "Las Fuentes"
     }
   ],
   "casos": [
@@ -633,7 +695,8 @@
         "medio": "Llamada",
         "horario": "Tardes",
         "mensaje": ""
-      }
+      },
+      "area_asignada": null
     },
     {
       "usuaria": "yolanda",
@@ -645,7 +708,8 @@
         "medio": "Mensaje de texto",
         "horario": "Mañanas",
         "mensaje": ""
-      }
+      },
+      "area_asignada": "psicologica"
     },
     {
       "usuaria": "brenda",
@@ -657,7 +721,8 @@
         "medio": "Solo dentro de la app",
         "horario": "Noches",
         "mensaje": ""
-      }
+      },
+      "area_asignada": "ambas"
     },
     {
       "usuaria": "silvia",
@@ -669,7 +734,35 @@
         "medio": "Llamada",
         "horario": "Mañanas",
         "mensaje": ""
-      }
+      },
+      "area_asignada": "juridica"
+    }
+  ],
+  "visitas": [
+    {
+      "usuaria": "maria",
+      "dias": 0,
+      "franja": "mañana",
+      "modulo": "trabajo_social"
+    },
+    {
+      "usuaria": "lucia",
+      "dias": 0,
+      "franja": "mañana",
+      "modulo": "economico",
+      "estado": "llego"
+    },
+    {
+      "usuaria": "yolanda",
+      "dias": 0,
+      "franja": "tarde",
+      "modulo": "psicologia"
+    },
+    {
+      "usuaria": "karla",
+      "dias": 2,
+      "franja": "mañana",
+      "modulo": "juridico"
     }
   ]
 }

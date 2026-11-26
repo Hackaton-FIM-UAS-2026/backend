@@ -103,6 +103,6 @@ Prueban que María → Emprendimiento + puente Capacitación, Lucía → Empleab
 ## Pendientes conocidos
 
 - Teléfono y horario oficiales del área jurídica de la Secretaría de las Mujeres de Sinaloa → `app/ia/plantillas.py` (`CONTACTO_EMERGENCIA`). Verificar también el número de la Línea de la Vida.
-- Las plantillas del flujo sensible están **a validar con CEMujeres**.
+- Las plantillas del flujo sensible están **a validar con SEMujeres**.
 - Que la usuaria autorice que su asesora vea su caso sensible (hoy no se puede: separación total).
 - Desempate de rutas con LLM (opcional según el documento); hoy en un empate gana el orden fijo.

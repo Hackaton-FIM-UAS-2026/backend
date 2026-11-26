@@ -87,7 +87,7 @@ class TestFusion(unittest.TestCase):
 
     def test_personal_no_sobrescribe_a_ella(self):
         e = fusionar({"campos": {}, "version": 0}, {"tiene_rfc": "No"}, "entrevista")["expediente"]
-        f = fusionar(e, {"tiene_rfc": "Sí"}, "personal_cemujeres", autor="asesora-1")
+        f = fusionar(e, {"tiene_rfc": "Sí"}, "personal_semujeres", autor="asesora-1")
         self.assertEqual(f["expediente"]["campos"]["tiene_rfc"]["valor"], "No")
         self.assertEqual(len(f["expediente"]["conflictos"]), 1)
         # Cuando ella responde, el conflicto se resuelve

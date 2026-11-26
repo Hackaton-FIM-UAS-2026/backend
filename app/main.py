@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from .config import settings
+from .modulos import registrar
 from .routers import admin, publico, sensible, usuaria
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
@@ -48,3 +49,6 @@ app.include_router(publico.router)
 app.include_router(usuaria.router)
 app.include_router(sensible.router)
 app.include_router(admin.router)
+
+# Módulos M1–M7: cada carpeta de app/modulos/ con router.py se registra sola.
+registrar(app)

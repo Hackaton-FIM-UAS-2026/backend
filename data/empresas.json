@@ -1,0 +1,55 @@
+{
+  "_aviso": "DATOS 100 % FICTICIOS para la demo (Empático y Medusa son aliadas reales; sus datos de contacto aquí son de ejemplo).",
+  "empresas": [
+    {
+      "alias": "empatico",
+      "nombre": "Empático coffee bar",
+      "rfc": "ECB200101AB1",
+      "giro": "Cafetería",
+      "contacto_nombre": "Sofía Leyva",
+      "telefono": "668 555 0201",
+      "estado": "aprobada",
+      "logo_url": "/aliadas/empatico.png"
+    },
+    {
+      "alias": "medusa",
+      "nombre": "Medusa Ristorante",
+      "rfc": "MRI190315CD2",
+      "giro": "Restaurante",
+      "contacto_nombre": "Andrea Castro",
+      "telefono": "668 555 0202",
+      "estado": "aprobada",
+      "logo_url": "/aliadas/medusa.png"
+    },
+    {
+      "alias": "despacho-ruiz",
+      "nombre": "Despacho Ruiz y Asociados",
+      "rfc": "DRA150720EF3",
+      "giro": "Contabilidad",
+      "contacto_nombre": "Mario Ruiz",
+      "telefono": "668 555 0203",
+      "estado": "aprobada",
+      "logo_url": null
+    },
+    {
+      "alias": "promociones-valle",
+      "nombre": "Promociones Del Valle",
+      "rfc": "PDV240101GH4",
+      "giro": "Eventos",
+      "contacto_nombre": "Contacto Del Valle",
+      "telefono": "33 5555 0204",
+      "estado": "pendiente",
+      "logo_url": null
+    },
+    {
+      "alias": "papeleria-sol",
+      "nombre": "Papelería El Sol",
+      "rfc": "PES210505JK5",
+      "giro": "Papelería",
+      "contacto_nombre": "Laura Soto",
+      "telefono": "668 555 0205",
+      "estado": "pendiente",
+      "logo_url": null
+    }
+  ]
+}

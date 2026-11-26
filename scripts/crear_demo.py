@@ -53,6 +53,7 @@ def main(ruta: str):
             "usuaria_id": uid, "nombre": x["nombre"], "correo": correo, "telefono": x["telefono"],
             "municipio": x["municipio"], "medio_contacto": x["medio_contacto"], "horario_contacto": x["horario_contacto"],
             "estado_seguimiento": x.get("estado_seguimiento", "Nueva"),
+            "curp": x.get("curp"), "colonia": x.get("colonia"),
             "acepto_privacidad_at": alta.isoformat(), "created_at": alta.isoformat()}).execute()
 
         exp = fusionar({"campos": {}, "version": 0, "conflictos": []}, x["respuestas"], "test_base")["expediente"]
@@ -68,7 +69,7 @@ def main(ruta: str):
             de_personal = texto.startswith("Asesora")
             cuando = alta + (ahora - alta) * i / (n + 1)
             eventos.append({"usuaria_id": uid, "version": 1, "texto": texto, "created_at": cuando.isoformat(),
-                            "fuente": "personal_cemujeres" if de_personal else "usuaria",
+                            "fuente": "personal_semujeres" if de_personal else "usuaria",
                             "autor": asesora if de_personal else None})
         sb.table("expediente_eventos").insert(eventos).execute()
 
@@ -81,7 +82,12 @@ def main(ruta: str):
     # Casos ficticios en la bandeja de especialistas (uno por usuaria)
     for c in demo.get("casos", []):
         uid = ids[c["usuaria"]]
+        area = c.get("area_asignada")
+        estado = c.get("estado", "nueva")
+        if area and estado == "nueva":
+            estado = "asignada"
         if sb.table("canalizaciones").select("id").eq("usuaria_id", uid).execute().data:
+            sb.table("canalizaciones").update({"area_asignada": area, "estado": estado}).eq("usuaria_id", uid).execute()
             continue
         cuando = (ahora - timedelta(days=c.get("dias", 0))).isoformat()
         sb.table("expedientes_sensibles").upsert({
@@ -89,8 +95,27 @@ def main(ruta: str):
             "datos_cifrados": cifrar({"tipo": c["tipo"], "resumen": "CASO FICTICIO de demostración.",
                                       "contacto": c["contacto"]})}).execute()
         sb.table("canalizaciones").insert({"usuaria_id": uid, "tipo": c["tipo"], "urgencia": c["urgencia"],
-                                           "estado": c.get("estado", "nueva"), "created_at": cuando}).execute()
+                                           "estado": estado, "area_asignada": area, "origen": "asistente",
+                                           "created_at": cuando}).execute()
         print(f"✓ caso ficticio ({c['tipo']}, {c['urgencia']}) de {c['usuaria']}")
+    # Visitas previstas (recepción)
+    hoy = ahora.date()
+    for v in demo.get("visitas", []):
+        uid = ids[v["usuaria"]]
+        sb.table("visitas").delete().eq("usuaria_id", uid).execute()
+        sb.table("visitas").insert({"usuaria_id": uid, "fecha": (hoy + timedelta(days=v.get("dias", 0))).isoformat(),
+                                    "franja": v["franja"], "modulo": v["modulo"],
+                                    "estado": v.get("estado", "por_llegar"), "origen": "asistente"}).execute()
+        print(f"✓ visita    {v['usuaria']} → {v['modulo']} ({v['franja']})")
+
+    # Cuentas de empresa (la fila de la empresa la crea scripts.cargar_catalogo)
+    ruta_emp = Path("data/empresas.json")
+    if ruta_emp.exists():
+        for e in json.loads(ruta_emp.read_text(encoding="utf-8"))["empresas"]:
+            uid = usuario(sb, f"{e['alias']}@demo.example", {"es_empresa": True, "nombre": e["nombre"]}, existentes)
+            sb.table("perfiles").delete().eq("usuaria_id", uid).execute()  # por si el trigger viejo la creó
+            sb.table("empresas").update({"user_id": uid, "correo": f"{e['alias']}@demo.example"}).eq("rfc", e["rfc"]).execute()
+            print(f"✓ empresa   {e['alias']}@demo.example ({e['estado']})")
     print(f"\nContraseña de todas las cuentas: {PASSWORD}")
 
 

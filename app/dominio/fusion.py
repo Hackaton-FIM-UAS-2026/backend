@@ -1,6 +1,6 @@
 """M5 · Fusión del expediente vivo.
 
-Regla: usuaria > personal de CEMujeres > entrevista > test base > inferido por IA,
+Regla: usuaria > personal de SEMujeres > entrevista > test base > inferido por IA,
 con dos matices del documento de diseño:
   * Todo lo que dice ELLA (test_base, entrevista, usuaria_edito) se actualiza con
     lo más reciente: si vuelve a contestar, su respuesta nueva gana.
@@ -14,7 +14,7 @@ from datetime import datetime, timezone
 from .diccionario import etiqueta, validar_valor
 
 DE_ELLA = {"test_base", "entrevista", "usuaria_edito"}
-FUENTES = DE_ELLA | {"personal_cemujeres", "inferido_ia"}
+FUENTES = DE_ELLA | {"personal_semujeres", "inferido_ia"}
 UMBRAL_CONFIANZA = 0.7
 
 
@@ -24,7 +24,7 @@ def _ahora() -> str:
 
 def _texto_evento(campo, valor, fuente) -> str:
     v = ", ".join(valor) if isinstance(valor, list) else valor
-    if fuente == "personal_cemujeres":
+    if fuente == "personal_semujeres":
         return f"Asesora registró: {etiqueta(campo).lower()} = {v}"
     if fuente == "inferido_ia":
         return f"El asistente anotó: {etiqueta(campo).lower()} = {v} (por confirmar)"
@@ -58,7 +58,7 @@ def fusionar(expediente: dict, nuevos: dict, fuente: str, confianza: float = 1.0
                 actual.update(fuente=fuente, confianza=1.0, por_confirmar=False, fecha=fecha)
             continue
 
-        if actual and fuente == "personal_cemujeres" and actual.get("fuente") in DE_ELLA:
+        if actual and fuente == "personal_semujeres" and actual.get("fuente") in DE_ELLA:
             c = {"campo": campo, "valor_usuaria": actual["valor"], "valor_personal": valor,
                  "autor": autor, "fecha": fecha}
             conflictos.append(c)
