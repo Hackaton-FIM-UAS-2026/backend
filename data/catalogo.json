@@ -1,0 +1,86 @@
+[
+  {
+    "id": "r1",
+    "titulo": "Curso: finanzas básicas para tu negocio",
+    "proveedor": "Ejemplo — Secretaría de Economía",
+    "tipo": "curso",
+    "rutas": ["capacitacion", "emprendimiento"],
+    "modalidad": "En línea",
+    "horario": "Flexible",
+    "horas_semana": 4,
+    "costo": "Gratis",
+    "ubicacion": "En línea",
+    "municipios": [],
+    "fecha_cierre": "2026-12-20",
+    "requisitos": [
+      {"campo": "edad", "op": ">=", "valor": "18 a 24", "duro": true, "label": "Ser mayor de 18"},
+      {"campo": "tiene_rfc", "op": "==", "valor": "Sí", "duro": false, "label": "Tener RFC"}
+    ],
+    "descripcion": "Aprende a separar el dinero de tu negocio y de tu casa, calcular tus precios y llevar tus cuentas desde el celular.",
+    "url_accion": "#",
+    "verificado_el": "2026-11"
+  },
+  {
+    "id": "r2",
+    "titulo": "Apoyo para iniciar tu negocio desde casa",
+    "proveedor": "Ejemplo — Gobierno de Sinaloa",
+    "tipo": "apoyo",
+    "rutas": ["emprendimiento"],
+    "modalidad": "Presencial",
+    "horario": "Mañanas",
+    "horas_semana": 6,
+    "costo": "Gratis",
+    "ubicacion": "Los Mochis",
+    "municipios": ["Ahome"],
+    "fecha_cierre": "2027-01-15",
+    "requisitos": [
+      {"campo": "municipio", "op": "in", "valor": ["Ahome"], "duro": true, "label": "Vivir en Ahome"},
+      {"campo": "documentos", "op": "contains", "valor": ["INE", "CURP"], "duro": true, "label": "INE y CURP"},
+      {"campo": "tiene_rfc", "op": "==", "valor": "Sí", "duro": false, "label": "Tener RFC"}
+    ],
+    "descripcion": "Apoyo económico y asesoría para mujeres que venden desde su casa: comida, costura, productos por catálogo.",
+    "url_accion": "#",
+    "verificado_el": "2026-11"
+  },
+  {
+    "id": "r3",
+    "titulo": "Vacante: atención al cliente (medio tiempo)",
+    "proveedor": "Ejemplo — Empresa local",
+    "tipo": "vacante",
+    "rutas": ["empleabilidad"],
+    "modalidad": "Presencial",
+    "horario": "Tardes",
+    "horas_semana": 25,
+    "costo": "Sueldo",
+    "ubicacion": "Los Mochis",
+    "municipios": ["Ahome"],
+    "fecha_cierre": "2026-12-10",
+    "requisitos": [
+      {"campo": "escolaridad", "op": ">=", "valor": "Preparatoria", "duro": true, "label": "Preparatoria terminada"},
+      {"campo": "habilidad_excel", "op": ">=", "valor": "Básico", "duro": false, "label": "Excel básico"}
+    ],
+    "descripcion": "Primer empleo en atención a clientes en tienda. Capacitación pagada la primera semana.",
+    "url_accion": "#",
+    "verificado_el": "2026-11"
+  },
+  {
+    "id": "r4",
+    "titulo": "Beca: alfabetización digital desde el celular",
+    "proveedor": "Ejemplo — ONG",
+    "tipo": "beca",
+    "rutas": ["capacitacion"],
+    "modalidad": "En línea",
+    "horario": "Flexible",
+    "horas_semana": 3,
+    "costo": "Gratis",
+    "ubicacion": "En línea",
+    "municipios": [],
+    "fecha_cierre": "2027-02-01",
+    "requisitos": [
+      {"campo": "dispositivo", "op": "in", "valor": ["Solo celular con datos", "Celular con wifi", "Computadora"], "duro": true, "label": "Tener celular o computadora"}
+    ],
+    "descripcion": "Aprende a usar WhatsApp Business, hacer videollamadas y llenar formularios en línea, a tu ritmo.",
+    "url_accion": "#",
+    "verificado_el": "2026-11"
+  }
+]
