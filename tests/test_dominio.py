@@ -17,7 +17,7 @@ from app.dominio.matching import recomendar  # noqa: E402
 from app.dominio.motor_ruta import calcular_ruta, explicacion_respaldo  # noqa: E402
 from app.dominio.requisitos import evaluar_recurso  # noqa: E402
 
-CATALOGO = json.loads((RAIZ / "data" / "catalogo.json").read_text(encoding="utf-8"))
+CATALOGO = json.loads((Path(__file__).parent / "catalogo_prueba.json").read_text(encoding="utf-8"))
 HOY = date(2026, 11, 27)
 
 MARIA = {"edad": "25 a 34", "municipio": "Ahome", "escolaridad": "Secundaria", "situacion": "Negocio propio",

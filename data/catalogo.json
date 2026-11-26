@@ -4,7 +4,10 @@
     "titulo": "Curso: finanzas básicas para tu negocio",
     "proveedor": "Ejemplo — Secretaría de Economía",
     "tipo": "curso",
-    "rutas": ["capacitacion", "emprendimiento"],
+    "rutas": [
+      "capacitacion",
+      "emprendimiento"
+    ],
     "modalidad": "En línea",
     "horario": "Flexible",
     "horas_semana": 4,
@@ -13,8 +16,20 @@
     "municipios": [],
     "fecha_cierre": "2026-12-20",
     "requisitos": [
-      {"campo": "edad", "op": ">=", "valor": "18 a 24", "duro": true, "label": "Ser mayor de 18"},
-      {"campo": "tiene_rfc", "op": "==", "valor": "Sí", "duro": false, "label": "Tener RFC"}
+      {
+        "campo": "edad",
+        "op": ">=",
+        "valor": "18 a 24",
+        "duro": true,
+        "label": "Ser mayor de 18"
+      },
+      {
+        "campo": "tiene_rfc",
+        "op": "==",
+        "valor": "Sí",
+        "duro": false,
+        "label": "Tener RFC"
+      }
     ],
     "descripcion": "Aprende a separar el dinero de tu negocio y de tu casa, calcular tus precios y llevar tus cuentas desde el celular.",
     "url_accion": "#",
@@ -25,18 +40,45 @@
     "titulo": "Apoyo para iniciar tu negocio desde casa",
     "proveedor": "Ejemplo — Gobierno de Sinaloa",
     "tipo": "apoyo",
-    "rutas": ["emprendimiento"],
+    "rutas": [
+      "emprendimiento"
+    ],
     "modalidad": "Presencial",
     "horario": "Mañanas",
     "horas_semana": 6,
     "costo": "Gratis",
     "ubicacion": "Los Mochis",
-    "municipios": ["Ahome"],
+    "municipios": [
+      "Ahome"
+    ],
     "fecha_cierre": "2027-01-15",
     "requisitos": [
-      {"campo": "municipio", "op": "in", "valor": ["Ahome"], "duro": true, "label": "Vivir en Ahome"},
-      {"campo": "documentos", "op": "contains", "valor": ["INE", "CURP"], "duro": true, "label": "INE y CURP"},
-      {"campo": "tiene_rfc", "op": "==", "valor": "Sí", "duro": false, "label": "Tener RFC"}
+      {
+        "campo": "municipio",
+        "op": "in",
+        "valor": [
+          "Ahome"
+        ],
+        "duro": true,
+        "label": "Vivir en Ahome"
+      },
+      {
+        "campo": "documentos",
+        "op": "contains",
+        "valor": [
+          "INE",
+          "CURP"
+        ],
+        "duro": true,
+        "label": "INE y CURP"
+      },
+      {
+        "campo": "tiene_rfc",
+        "op": "==",
+        "valor": "Sí",
+        "duro": false,
+        "label": "Tener RFC"
+      }
     ],
     "descripcion": "Apoyo económico y asesoría para mujeres que venden desde su casa: comida, costura, productos por catálogo.",
     "url_accion": "#",
@@ -47,17 +89,33 @@
     "titulo": "Vacante: atención al cliente (medio tiempo)",
     "proveedor": "Ejemplo — Empresa local",
     "tipo": "vacante",
-    "rutas": ["empleabilidad"],
+    "rutas": [
+      "empleabilidad"
+    ],
     "modalidad": "Presencial",
     "horario": "Tardes",
     "horas_semana": 25,
     "costo": "Sueldo",
     "ubicacion": "Los Mochis",
-    "municipios": ["Ahome"],
+    "municipios": [
+      "Ahome"
+    ],
     "fecha_cierre": "2026-12-10",
     "requisitos": [
-      {"campo": "escolaridad", "op": ">=", "valor": "Preparatoria", "duro": true, "label": "Preparatoria terminada"},
-      {"campo": "habilidad_excel", "op": ">=", "valor": "Básico", "duro": false, "label": "Excel básico"}
+      {
+        "campo": "escolaridad",
+        "op": ">=",
+        "valor": "Preparatoria",
+        "duro": true,
+        "label": "Preparatoria terminada"
+      },
+      {
+        "campo": "habilidad_excel",
+        "op": ">=",
+        "valor": "Básico",
+        "duro": false,
+        "label": "Excel básico"
+      }
     ],
     "descripcion": "Primer empleo en atención a clientes en tienda. Capacitación pagada la primera semana.",
     "url_accion": "#",
@@ -68,7 +126,9 @@
     "titulo": "Beca: alfabetización digital desde el celular",
     "proveedor": "Ejemplo — ONG",
     "tipo": "beca",
-    "rutas": ["capacitacion"],
+    "rutas": [
+      "capacitacion"
+    ],
     "modalidad": "En línea",
     "horario": "Flexible",
     "horas_semana": 3,
@@ -77,9 +137,801 @@
     "municipios": [],
     "fecha_cierre": "2027-02-01",
     "requisitos": [
-      {"campo": "dispositivo", "op": "in", "valor": ["Solo celular con datos", "Celular con wifi", "Computadora"], "duro": true, "label": "Tener celular o computadora"}
+      {
+        "campo": "dispositivo",
+        "op": "in",
+        "valor": [
+          "Solo celular con datos",
+          "Celular con wifi",
+          "Computadora"
+        ],
+        "duro": true,
+        "label": "Tener celular o computadora"
+      }
     ],
     "descripcion": "Aprende a usar WhatsApp Business, hacer videollamadas y llenar formularios en línea, a tu ritmo.",
+    "url_accion": "#",
+    "verificado_el": "2026-11"
+  },
+  {
+    "id": "r5",
+    "titulo": "Vacante: cajera en tienda de autoservicio",
+    "proveedor": "Ejemplo — Cadena comercial del norte",
+    "tipo": "vacante",
+    "rutas": [
+      "empleabilidad"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Tardes",
+    "horas_semana": 40,
+    "costo": "Gratis",
+    "ubicacion": "Los Mochis, centro",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": "2026-12-15",
+    "requisitos": [
+      {
+        "campo": "edad",
+        "op": ">=",
+        "valor": "18 a 24",
+        "duro": true,
+        "label": "Ser mayor de 18"
+      },
+      {
+        "campo": "escolaridad",
+        "op": ">=",
+        "valor": "Secundaria",
+        "duro": true,
+        "label": "Secundaria terminada"
+      },
+      {
+        "campo": "documentos",
+        "op": "contains",
+        "valor": [
+          "INE",
+          "CURP"
+        ],
+        "duro": true,
+        "label": "INE y CURP"
+      }
+    ],
+    "descripcion": "Turno vespertino con prestaciones de ley. Capacitación pagada la primera semana.",
+    "url_accion": "#",
+    "verificado_el": "2026-11"
+  },
+  {
+    "id": "r6",
+    "titulo": "Vacante: auxiliar de cocina en restaurante",
+    "proveedor": "Ejemplo — Restaurante familiar",
+    "tipo": "vacante",
+    "rutas": [
+      "empleabilidad"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Mañanas",
+    "horas_semana": 30,
+    "costo": "Gratis",
+    "ubicacion": "Los Mochis, bulevar Rosales",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": "2026-12-10",
+    "requisitos": [
+      {
+        "campo": "edad",
+        "op": ">=",
+        "valor": "18 a 24",
+        "duro": true,
+        "label": "Ser mayor de 18"
+      },
+      {
+        "campo": "habilidades",
+        "op": "contains_any",
+        "valor": [
+          "Cocina"
+        ],
+        "duro": false,
+        "label": "Saber cocinar"
+      },
+      {
+        "campo": "documentos",
+        "op": "contains",
+        "valor": [
+          "INE",
+          "CURP"
+        ],
+        "duro": true,
+        "label": "INE y CURP"
+      }
+    ],
+    "descripcion": "Preparación de alimentos y apoyo en cocina. Horario fijo de mañana.",
+    "url_accion": "#",
+    "verificado_el": "2026-11"
+  },
+  {
+    "id": "r7",
+    "titulo": "Vacante: recepcionista en clínica",
+    "proveedor": "Ejemplo — Clínica privada",
+    "tipo": "vacante",
+    "rutas": [
+      "empleabilidad"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Mañanas",
+    "horas_semana": 40,
+    "costo": "Gratis",
+    "ubicacion": "Los Mochis",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": "2026-12-20",
+    "requisitos": [
+      {
+        "campo": "escolaridad",
+        "op": ">=",
+        "valor": "Preparatoria",
+        "duro": true,
+        "label": "Preparatoria terminada"
+      },
+      {
+        "campo": "habilidad_excel",
+        "op": ">=",
+        "valor": "Básico",
+        "duro": false,
+        "label": "Excel básico"
+      },
+      {
+        "campo": "tiene_experiencia",
+        "op": "==",
+        "valor": "Sí",
+        "duro": false,
+        "label": "Experiencia laboral previa"
+      }
+    ],
+    "descripcion": "Atención a pacientes, agenda y cobro. Se busca trato amable y orden.",
+    "url_accion": "#",
+    "verificado_el": "2026-11"
+  },
+  {
+    "id": "r8",
+    "titulo": "Vacante: costurera en taller de uniformes",
+    "proveedor": "Ejemplo — Taller textil",
+    "tipo": "vacante",
+    "rutas": [
+      "empleabilidad"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Mañanas",
+    "horas_semana": 36,
+    "costo": "Gratis",
+    "ubicacion": "Ahome, parque industrial",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": "2027-01-15",
+    "requisitos": [
+      {
+        "campo": "edad",
+        "op": ">=",
+        "valor": "18 a 24",
+        "duro": true,
+        "label": "Ser mayor de 18"
+      },
+      {
+        "campo": "habilidades",
+        "op": "contains_any",
+        "valor": [
+          "Costura"
+        ],
+        "duro": true,
+        "label": "Saber coser a máquina"
+      }
+    ],
+    "descripcion": "Confección de uniformes escolares y de empresa. Pago por semana.",
+    "url_accion": "#",
+    "verificado_el": "2026-11"
+  },
+  {
+    "id": "r9",
+    "titulo": "Vacante: cuidadora de personas mayores",
+    "proveedor": "Ejemplo — Agencia de cuidados",
+    "tipo": "vacante",
+    "rutas": [
+      "empleabilidad"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Flexible",
+    "horas_semana": 20,
+    "costo": "Gratis",
+    "ubicacion": "A domicilio en Los Mochis",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": "2027-01-31",
+    "requisitos": [
+      {
+        "campo": "edad",
+        "op": ">=",
+        "valor": "18 a 24",
+        "duro": true,
+        "label": "Ser mayor de 18"
+      },
+      {
+        "campo": "habilidades",
+        "op": "contains_any",
+        "valor": [
+          "Cuidado de personas"
+        ],
+        "duro": false,
+        "label": "Experiencia cuidando personas"
+      },
+      {
+        "campo": "documentos",
+        "op": "contains",
+        "valor": [
+          "INE",
+          "CURP"
+        ],
+        "duro": true,
+        "label": "INE y CURP"
+      }
+    ],
+    "descripcion": "Acompañamiento y cuidados básicos a domicilio. Turnos que se acomodan a tu horario.",
+    "url_accion": "#",
+    "verificado_el": "2026-11"
+  },
+  {
+    "id": "r10",
+    "titulo": "Vacante: atención por chat desde casa",
+    "proveedor": "Ejemplo — Centro de contacto",
+    "tipo": "vacante",
+    "rutas": [
+      "empleabilidad"
+    ],
+    "modalidad": "En línea",
+    "horario": "Noches",
+    "horas_semana": 25,
+    "costo": "Gratis",
+    "ubicacion": "Desde casa",
+    "municipios": [],
+    "fecha_cierre": "2026-12-31",
+    "requisitos": [
+      {
+        "campo": "escolaridad",
+        "op": ">=",
+        "valor": "Preparatoria",
+        "duro": true,
+        "label": "Preparatoria terminada"
+      },
+      {
+        "campo": "dispositivo",
+        "op": "in",
+        "valor": [
+          "Computadora"
+        ],
+        "duro": true,
+        "label": "Tener computadora"
+      },
+      {
+        "campo": "tiene_cuenta_bancaria",
+        "op": "==",
+        "valor": "Sí",
+        "duro": false,
+        "label": "Tener cuenta bancaria"
+      }
+    ],
+    "descripcion": "Responder mensajes de clientes desde casa. Se requiere internet estable.",
+    "url_accion": "#",
+    "verificado_el": "2026-11"
+  },
+  {
+    "id": "r11",
+    "titulo": "Bolsa de trabajo municipal",
+    "proveedor": "Ejemplo — Servicio municipal de empleo",
+    "tipo": "apoyo",
+    "rutas": [
+      "empleabilidad"
+    ],
+    "modalidad": "Híbrida",
+    "horario": "Mañanas",
+    "horas_semana": 2,
+    "costo": "Gratis",
+    "ubicacion": "Los Mochis, palacio municipal",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": null,
+    "requisitos": [
+      {
+        "campo": "edad",
+        "op": ">=",
+        "valor": "18 a 24",
+        "duro": true,
+        "label": "Ser mayor de 18"
+      }
+    ],
+    "descripcion": "Te ayudan a armar tu solicitud y te avisan de vacantes que van contigo.",
+    "url_accion": "#",
+    "verificado_el": "2026-11"
+  },
+  {
+    "id": "r12",
+    "titulo": "Taller: cómo hacer tu currículum y prepararte para la entrevista",
+    "proveedor": "Ejemplo — Instituto de capacitación",
+    "tipo": "curso",
+    "rutas": [
+      "empleabilidad",
+      "capacitacion"
+    ],
+    "modalidad": "En línea",
+    "horario": "Flexible",
+    "horas_semana": 3,
+    "costo": "Gratis",
+    "ubicacion": "En línea",
+    "municipios": [],
+    "fecha_cierre": "2027-02-28",
+    "requisitos": [],
+    "descripcion": "Tres sesiones cortas desde el celular: tu currículum, la entrevista y tus derechos laborales.",
+    "url_accion": "#",
+    "verificado_el": "2026-11"
+  },
+  {
+    "id": "r13",
+    "titulo": "Microcrédito para mujeres emprendedoras",
+    "proveedor": "Ejemplo — Fondo estatal de financiamiento",
+    "tipo": "financiamiento",
+    "rutas": [
+      "emprendimiento"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Mañanas",
+    "horas_semana": null,
+    "costo": "Tasa preferencial",
+    "ubicacion": "Oficina regional Los Mochis",
+    "municipios": [
+      "Ahome",
+      "Guasave",
+      "El Fuerte"
+    ],
+    "fecha_cierre": "2027-01-30",
+    "requisitos": [
+      {
+        "campo": "negocio",
+        "op": "==",
+        "valor": "Ya vendo",
+        "duro": true,
+        "label": "Tener un negocio funcionando"
+      },
+      {
+        "campo": "documentos",
+        "op": "contains",
+        "valor": [
+          "INE",
+          "CURP"
+        ],
+        "duro": true,
+        "label": "INE y CURP"
+      },
+      {
+        "campo": "tiene_rfc",
+        "op": "==",
+        "valor": "Sí",
+        "duro": false,
+        "label": "Tener RFC"
+      },
+      {
+        "campo": "tiene_cuenta_bancaria",
+        "op": "==",
+        "valor": "Sí",
+        "duro": false,
+        "label": "Tener cuenta bancaria"
+      }
+    ],
+    "descripcion": "Crédito de 5,000 a 30,000 pesos para equipo o mercancía, con pagos semanales.",
+    "url_accion": "#",
+    "verificado_el": "2026-11"
+  },
+  {
+    "id": "r14",
+    "titulo": "Apoyo en especie: equipo para tu negocio",
+    "proveedor": "Ejemplo — Programa estatal de autoempleo",
+    "tipo": "apoyo",
+    "rutas": [
+      "emprendimiento"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Mañanas",
+    "horas_semana": null,
+    "costo": "Gratis",
+    "ubicacion": "Los Mochis",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": "2026-12-12",
+    "requisitos": [
+      {
+        "campo": "negocio",
+        "op": "in",
+        "valor": [
+          "Tengo una idea",
+          "Ya vendo"
+        ],
+        "duro": true,
+        "label": "Tener una idea o un negocio"
+      },
+      {
+        "campo": "documentos",
+        "op": "contains",
+        "valor": [
+          "INE",
+          "CURP"
+        ],
+        "duro": true,
+        "label": "INE y CURP"
+      },
+      {
+        "campo": "municipio",
+        "op": "in",
+        "valor": [
+          "Ahome"
+        ],
+        "duro": true,
+        "label": "Vivir en Ahome"
+      }
+    ],
+    "descripcion": "Entrega de herramientas o equipo (horno, máquina de coser, refrigerador) para iniciar o crecer.",
+    "url_accion": "#",
+    "verificado_el": "2026-11"
+  },
+  {
+    "id": "r15",
+    "titulo": "Incubadora de negocios: de la idea al primer cliente",
+    "proveedor": "Ejemplo — Universidad pública",
+    "tipo": "curso",
+    "rutas": [
+      "emprendimiento",
+      "capacitacion"
+    ],
+    "modalidad": "Híbrida",
+    "horario": "Tardes",
+    "horas_semana": 6,
+    "costo": "Gratis",
+    "ubicacion": "Los Mochis, campus",
+    "municipios": [
+      "Ahome",
+      "Guasave"
+    ],
+    "fecha_cierre": "2027-02-15",
+    "requisitos": [
+      {
+        "campo": "negocio",
+        "op": "in",
+        "valor": [
+          "Tengo una idea",
+          "Ya vendo"
+        ],
+        "duro": true,
+        "label": "Tener una idea o un negocio"
+      },
+      {
+        "campo": "edad",
+        "op": ">=",
+        "valor": "18 a 24",
+        "duro": true,
+        "label": "Ser mayor de 18"
+      }
+    ],
+    "descripcion": "Ocho semanas con asesoría para tu plan de negocio, precios y ventas.",
+    "url_accion": "#",
+    "verificado_el": "2026-11"
+  },
+  {
+    "id": "r16",
+    "titulo": "Taller: vende por WhatsApp y redes sociales",
+    "proveedor": "Ejemplo — Cámara de comercio",
+    "tipo": "curso",
+    "rutas": [
+      "emprendimiento",
+      "capacitacion"
+    ],
+    "modalidad": "En línea",
+    "horario": "Noches",
+    "horas_semana": 2,
+    "costo": "Gratis",
+    "ubicacion": "En línea",
+    "municipios": [],
+    "fecha_cierre": "2026-12-30",
+    "requisitos": [
+      {
+        "campo": "negocio",
+        "op": "in",
+        "valor": [
+          "Tengo una idea",
+          "Ya vendo"
+        ],
+        "duro": true,
+        "label": "Tener una idea o un negocio"
+      }
+    ],
+    "descripcion": "Fotos con el celular, catálogo de WhatsApp y cómo atender pedidos.",
+    "url_accion": "#",
+    "verificado_el": "2026-11"
+  },
+  {
+    "id": "r17",
+    "titulo": "Registro en el SAT y facturación paso a paso",
+    "proveedor": "Ejemplo — Asesoría fiscal gratuita",
+    "tipo": "apoyo",
+    "rutas": [
+      "emprendimiento"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Mañanas",
+    "horas_semana": 2,
+    "costo": "Gratis",
+    "ubicacion": "Los Mochis",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": null,
+    "requisitos": [
+      {
+        "campo": "documentos",
+        "op": "contains",
+        "valor": [
+          "INE",
+          "CURP"
+        ],
+        "duro": true,
+        "label": "INE y CURP"
+      }
+    ],
+    "descripcion": "Te acompañan a sacar tu RFC y a emitir tu primera factura en el régimen más simple.",
+    "url_accion": "#",
+    "verificado_el": "2026-11"
+  },
+  {
+    "id": "r18",
+    "titulo": "Bazar mensual de emprendedoras",
+    "proveedor": "Ejemplo — Ayuntamiento",
+    "tipo": "apoyo",
+    "rutas": [
+      "emprendimiento"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Fines de semana",
+    "horas_semana": 8,
+    "costo": "Gratis",
+    "ubicacion": "Plazuela de Los Mochis",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": "2026-12-14",
+    "requisitos": [
+      {
+        "campo": "negocio",
+        "op": "==",
+        "valor": "Ya vendo",
+        "duro": true,
+        "label": "Tener un negocio funcionando"
+      }
+    ],
+    "descripcion": "Un espacio sin costo para vender tus productos un fin de semana al mes.",
+    "url_accion": "#",
+    "verificado_el": "2026-11"
+  },
+  {
+    "id": "r19",
+    "titulo": "Curso: manejo higiénico de alimentos",
+    "proveedor": "Ejemplo — Secretaría de salud estatal",
+    "tipo": "curso",
+    "rutas": [
+      "capacitacion",
+      "emprendimiento"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Mañanas",
+    "horas_semana": 4,
+    "costo": "Gratis",
+    "ubicacion": "Centro de salud Los Mochis",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": "2026-12-18",
+    "requisitos": [
+      {
+        "campo": "edad",
+        "op": ">=",
+        "valor": "18 a 24",
+        "duro": true,
+        "label": "Ser mayor de 18"
+      }
+    ],
+    "descripcion": "Constancia oficial para vender comida. Dos mañanas.",
+    "url_accion": "#",
+    "verificado_el": "2026-11"
+  },
+  {
+    "id": "r20",
+    "titulo": "Primaria y secundaria para personas adultas",
+    "proveedor": "Ejemplo — Instituto de educación para adultos",
+    "tipo": "beca",
+    "rutas": [
+      "capacitacion"
+    ],
+    "modalidad": "Híbrida",
+    "horario": "Flexible",
+    "horas_semana": 5,
+    "costo": "Gratis",
+    "ubicacion": "Plazas comunitarias",
+    "municipios": [
+      "Ahome",
+      "Guasave",
+      "El Fuerte"
+    ],
+    "fecha_cierre": null,
+    "requisitos": [
+      {
+        "campo": "edad",
+        "op": ">=",
+        "valor": "18 a 24",
+        "duro": true,
+        "label": "Ser mayor de 18"
+      },
+      {
+        "campo": "escolaridad",
+        "op": "<=",
+        "valor": "Primaria",
+        "duro": false,
+        "label": "No haber terminado la secundaria"
+      }
+    ],
+    "descripcion": "Termina tus estudios a tu ritmo y recibe certificado oficial.",
+    "url_accion": "#",
+    "verificado_el": "2026-11"
+  },
+  {
+    "id": "r21",
+    "titulo": "Preparatoria abierta en línea",
+    "proveedor": "Ejemplo — Subsistema de preparatoria abierta",
+    "tipo": "beca",
+    "rutas": [
+      "capacitacion",
+      "empleabilidad"
+    ],
+    "modalidad": "En línea",
+    "horario": "Flexible",
+    "horas_semana": 8,
+    "costo": "Gratis",
+    "ubicacion": "En línea",
+    "municipios": [],
+    "fecha_cierre": null,
+    "requisitos": [
+      {
+        "campo": "escolaridad",
+        "op": ">=",
+        "valor": "Secundaria",
+        "duro": true,
+        "label": "Secundaria terminada"
+      }
+    ],
+    "descripcion": "Estudia la prepa desde el celular. Exámenes en sede cercana.",
+    "url_accion": "#",
+    "verificado_el": "2026-11"
+  },
+  {
+    "id": "r22",
+    "titulo": "Curso: Excel básico para el trabajo",
+    "proveedor": "Ejemplo — Centro de capacitación para el trabajo",
+    "tipo": "curso",
+    "rutas": [
+      "capacitacion",
+      "empleabilidad"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Tardes",
+    "horas_semana": 6,
+    "costo": "Cuota de recuperación baja",
+    "ubicacion": "Los Mochis",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": "2027-01-20",
+    "requisitos": [
+      {
+        "campo": "escolaridad",
+        "op": ">=",
+        "valor": "Secundaria",
+        "duro": true,
+        "label": "Secundaria terminada"
+      }
+    ],
+    "descripcion": "Hojas de cálculo, fórmulas sencillas e inventarios. Con constancia.",
+    "url_accion": "#",
+    "verificado_el": "2026-11"
+  },
+  {
+    "id": "r23",
+    "titulo": "Curso: corte y confección",
+    "proveedor": "Ejemplo — Centro de capacitación para el trabajo",
+    "tipo": "curso",
+    "rutas": [
+      "capacitacion",
+      "emprendimiento"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Mañanas",
+    "horas_semana": 8,
+    "costo": "Cuota de recuperación baja",
+    "ubicacion": "Los Mochis",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": "2027-01-20",
+    "requisitos": [
+      {
+        "campo": "edad",
+        "op": ">=",
+        "valor": "18 a 24",
+        "duro": true,
+        "label": "Ser mayor de 18"
+      }
+    ],
+    "descripcion": "Patronaje, máquina recta y arreglos de ropa. Material incluido.",
+    "url_accion": "#",
+    "verificado_el": "2026-11"
+  },
+  {
+    "id": "r24",
+    "titulo": "Beca de transporte para estudiar",
+    "proveedor": "Ejemplo — Programa estatal de becas",
+    "tipo": "beca",
+    "rutas": [
+      "capacitacion"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Flexible",
+    "horas_semana": null,
+    "costo": "Gratis",
+    "ubicacion": "Los Mochis",
+    "municipios": [
+      "Ahome",
+      "Guasave",
+      "El Fuerte"
+    ],
+    "fecha_cierre": "2026-12-31",
+    "requisitos": [
+      {
+        "campo": "municipio",
+        "op": "in",
+        "valor": [
+          "Ahome",
+          "Guasave",
+          "El Fuerte"
+        ],
+        "duro": true,
+        "label": "Vivir en el norte de Sinaloa"
+      },
+      {
+        "campo": "documentos",
+        "op": "contains",
+        "valor": [
+          "INE",
+          "CURP"
+        ],
+        "duro": true,
+        "label": "INE y CURP"
+      },
+      {
+        "campo": "tiene_cuenta_bancaria",
+        "op": "==",
+        "valor": "Sí",
+        "duro": false,
+        "label": "Tener cuenta bancaria"
+      }
+    ],
+    "descripcion": "Apoyo mensual para pasajes mientras estudias un curso o la escuela.",
     "url_accion": "#",
     "verificado_el": "2026-11"
   }

@@ -1,0 +1,675 @@
+{
+  "_aviso": "DATOS 100 % FICTICIOS para la demo. Teléfonos 555 y correos @demo.example. Reemplaza este archivo o deja de usarlo cuando haya datos reales.",
+  "personal": {
+    "asesora": [
+      "Ana Torres",
+      "asesora_economica"
+    ],
+    "juridica": [
+      "Lic. Carmen Soto",
+      "especialista_juridica"
+    ],
+    "psicologica": [
+      "Psic. Laura Mendoza",
+      "especialista_psicologica"
+    ],
+    "coordinacion": [
+      "Coordinación CEMujeres",
+      "coordinacion"
+    ]
+  },
+  "usuarias": [
+    {
+      "alias": "maria",
+      "nombre": "María Hernández",
+      "telefono": "668 555 0101",
+      "municipio": "Ahome",
+      "estado_seguimiento": "Nueva",
+      "dias_desde_registro": 0,
+      "medio_contacto": "WhatsApp",
+      "horario_contacto": "Mañanas",
+      "respuestas": {
+        "municipio": "Ahome",
+        "edad": "25 a 34",
+        "escolaridad": "Secundaria",
+        "situacion": "Negocio propio",
+        "meta": "Iniciar o hacer crecer un negocio",
+        "horas_semana": "10 a 15",
+        "horario": [
+          "Mañana"
+        ],
+        "cuidados": [
+          "Niñas o niños"
+        ],
+        "dispositivo": "Solo celular con datos",
+        "habilidades": [
+          "Cocina",
+          "Ventas"
+        ],
+        "negocio": "Ya vendo",
+        "documentos": [
+          "CURP",
+          "INE"
+        ]
+      },
+      "acciones": {},
+      "eventos": []
+    },
+    {
+      "alias": "lucia",
+      "nombre": "Lucía Valenzuela",
+      "telefono": "668 555 0102",
+      "municipio": "Ahome",
+      "estado_seguimiento": "Nueva",
+      "dias_desde_registro": 1,
+      "medio_contacto": "Correo",
+      "horario_contacto": "Tardes",
+      "respuestas": {
+        "municipio": "Ahome",
+        "edad": "18 a 24",
+        "escolaridad": "Preparatoria",
+        "situacion": "Sin ingreso",
+        "meta": "Un empleo",
+        "horas_semana": "30 o más",
+        "horario": [
+          "Mañana",
+          "Tarde"
+        ],
+        "cuidados": [
+          "Ninguna"
+        ],
+        "dispositivo": "Computadora",
+        "habilidades": [
+          "Atención al cliente",
+          "Computación"
+        ],
+        "negocio": "No",
+        "documentos": [
+          "CURP",
+          "INE",
+          "RFC"
+        ]
+      },
+      "acciones": {},
+      "eventos": []
+    },
+    {
+      "alias": "rosa",
+      "nombre": "Rosa Beltrán",
+      "telefono": "668 555 0103",
+      "municipio": "Ahome",
+      "estado_seguimiento": "En curso",
+      "dias_desde_registro": 9,
+      "medio_contacto": "Llamada",
+      "horario_contacto": "Tardes",
+      "respuestas": {
+        "municipio": "Ahome",
+        "edad": "45 a 59",
+        "escolaridad": "Primaria",
+        "situacion": "Empleo informal",
+        "meta": "Aprender algo nuevo",
+        "horas_semana": "10 a 15",
+        "horario": [
+          "Tarde"
+        ],
+        "cuidados": [
+          "Personas mayores"
+        ],
+        "dispositivo": "Solo celular con datos",
+        "habilidades": [
+          "Costura"
+        ],
+        "negocio": "Tengo una idea",
+        "documentos": [
+          "CURP",
+          "INE"
+        ]
+      },
+      "acciones": {
+        "r4": "inscrita",
+        "r23": "guardado"
+      },
+      "eventos": [
+        "Se inscribió a alfabetización digital"
+      ]
+    },
+    {
+      "alias": "karla",
+      "nombre": "Karla Osuna",
+      "telefono": "668 555 0104",
+      "municipio": "Ahome",
+      "estado_seguimiento": "Contratada",
+      "dias_desde_registro": 30,
+      "medio_contacto": "WhatsApp",
+      "horario_contacto": "Noches",
+      "respuestas": {
+        "municipio": "Ahome",
+        "edad": "25 a 34",
+        "escolaridad": "Preparatoria",
+        "situacion": "Sin ingreso",
+        "meta": "Un empleo",
+        "horas_semana": "16 a 29",
+        "horario": [
+          "Tarde"
+        ],
+        "cuidados": [
+          "Niñas o niños"
+        ],
+        "dispositivo": "Celular con wifi",
+        "habilidades": [
+          "Atención al cliente",
+          "Ventas"
+        ],
+        "negocio": "No",
+        "documentos": [
+          "CURP",
+          "INE",
+          "RFC",
+          "Cuenta bancaria"
+        ],
+        "tiene_experiencia": "Sí"
+      },
+      "acciones": {
+        "r5": "contratada",
+        "r12": "terminado"
+      },
+      "eventos": [
+        "Terminó el taller de currículum",
+        "Asesora registró: contratada como cajera"
+      ]
+    },
+    {
+      "alias": "daniela",
+      "nombre": "Daniela Ruiz",
+      "telefono": "687 555 0105",
+      "municipio": "Guasave",
+      "estado_seguimiento": "Nueva",
+      "dias_desde_registro": 4,
+      "medio_contacto": "Correo",
+      "horario_contacto": "Fines de semana",
+      "respuestas": {
+        "municipio": "Guasave",
+        "edad": "25 a 34",
+        "escolaridad": "Universidad",
+        "situacion": "Empleo formal",
+        "meta": "Iniciar o hacer crecer un negocio",
+        "horas_semana": "16 a 29",
+        "horario": [
+          "Fines de semana"
+        ],
+        "cuidados": [
+          "Ninguna"
+        ],
+        "dispositivo": "Computadora",
+        "habilidades": [
+          "Computación",
+          "Ventas"
+        ],
+        "negocio": "Tengo una idea",
+        "documentos": [
+          "CURP",
+          "INE",
+          "RFC",
+          "Cuenta bancaria"
+        ]
+      },
+      "acciones": {
+        "r15": "guardado"
+      },
+      "eventos": []
+    },
+    {
+      "alias": "patricia",
+      "nombre": "Patricia Lugo",
+      "telefono": "668 555 0106",
+      "municipio": "Ahome",
+      "estado_seguimiento": "Curso terminado",
+      "dias_desde_registro": 33,
+      "medio_contacto": "WhatsApp",
+      "horario_contacto": "Mañanas",
+      "respuestas": {
+        "municipio": "Ahome",
+        "edad": "35 a 44",
+        "escolaridad": "Secundaria",
+        "situacion": "Sin ingreso",
+        "meta": "Aprender algo nuevo",
+        "horas_semana": "Menos de 10",
+        "horario": [
+          "Mañana"
+        ],
+        "cuidados": [
+          "Niñas o niños"
+        ],
+        "dispositivo": "Solo celular con datos",
+        "habilidades": [
+          "Limpieza",
+          "Cocina"
+        ],
+        "negocio": "No",
+        "documentos": [
+          "CURP",
+          "INE"
+        ]
+      },
+      "acciones": {
+        "r19": "terminado"
+      },
+      "eventos": [
+        "Terminó el curso de manejo de alimentos"
+      ]
+    },
+    {
+      "alias": "guadalupe",
+      "nombre": "Guadalupe Castro",
+      "telefono": "668 555 0107",
+      "municipio": "Ahome",
+      "estado_seguimiento": "Negocio registrado",
+      "dias_desde_registro": 28,
+      "medio_contacto": "Llamada",
+      "horario_contacto": "Mañanas",
+      "respuestas": {
+        "municipio": "Ahome",
+        "edad": "35 a 44",
+        "escolaridad": "Secundaria",
+        "situacion": "Negocio propio",
+        "meta": "Iniciar o hacer crecer un negocio",
+        "horas_semana": "16 a 29",
+        "horario": [
+          "Mañana",
+          "Tarde"
+        ],
+        "cuidados": [
+          "Niñas o niños"
+        ],
+        "dispositivo": "Celular con wifi",
+        "habilidades": [
+          "Cocina",
+          "Ventas"
+        ],
+        "negocio": "Ya vendo",
+        "documentos": [
+          "CURP",
+          "INE",
+          "RFC",
+          "Cuenta bancaria"
+        ],
+        "tiene_rfc": "Sí",
+        "tiene_cuenta_bancaria": "Sí"
+      },
+      "acciones": {
+        "r13": "aplicado",
+        "r17": "terminado",
+        "r18": "inscrita"
+      },
+      "eventos": [
+        "Sacó su RFC con la asesoría fiscal",
+        "Solicitó el microcrédito"
+      ]
+    },
+    {
+      "alias": "fernanda",
+      "nombre": "Fernanda Gil",
+      "telefono": "668 555 0108",
+      "municipio": "Ahome",
+      "estado_seguimiento": "Inscrita",
+      "dias_desde_registro": 20,
+      "medio_contacto": "WhatsApp",
+      "horario_contacto": "Tardes",
+      "respuestas": {
+        "municipio": "Ahome",
+        "edad": "18 a 24",
+        "escolaridad": "Secundaria",
+        "situacion": "Sin ingreso",
+        "meta": "Un empleo",
+        "horas_semana": "30 o más",
+        "horario": [
+          "Mañana",
+          "Tarde"
+        ],
+        "cuidados": [
+          "Ninguna"
+        ],
+        "dispositivo": "Solo celular con datos",
+        "habilidades": [
+          "Atención al cliente"
+        ],
+        "negocio": "No",
+        "documentos": [
+          "CURP",
+          "INE"
+        ]
+      },
+      "acciones": {
+        "r21": "inscrita",
+        "r11": "aplicado"
+      },
+      "eventos": [
+        "Se inscribió a la preparatoria abierta"
+      ]
+    },
+    {
+      "alias": "teresa",
+      "nombre": "Teresa Armenta",
+      "telefono": "694 555 0109",
+      "municipio": "El Fuerte",
+      "estado_seguimiento": "En curso",
+      "dias_desde_registro": 24,
+      "medio_contacto": "Llamada",
+      "horario_contacto": "Mañanas",
+      "respuestas": {
+        "municipio": "El Fuerte",
+        "edad": "45 a 59",
+        "escolaridad": "Primaria",
+        "situacion": "Empleo informal",
+        "meta": "Aprender algo nuevo",
+        "horas_semana": "10 a 15",
+        "horario": [
+          "Mañana"
+        ],
+        "cuidados": [
+          "Personas mayores"
+        ],
+        "dispositivo": "Solo celular con datos",
+        "habilidades": [
+          "Costura",
+          "Cocina"
+        ],
+        "negocio": "No",
+        "documentos": [
+          "CURP",
+          "INE"
+        ]
+      },
+      "acciones": {
+        "r20": "inscrita"
+      },
+      "eventos": [
+        "Empezó la secundaria para adultas"
+      ]
+    },
+    {
+      "alias": "alejandra",
+      "nombre": "Alejandra Félix",
+      "telefono": "668 555 0110",
+      "municipio": "Ahome",
+      "estado_seguimiento": "Inscrita",
+      "dias_desde_registro": 16,
+      "medio_contacto": "WhatsApp",
+      "horario_contacto": "Noches",
+      "respuestas": {
+        "municipio": "Ahome",
+        "edad": "25 a 34",
+        "escolaridad": "Preparatoria",
+        "situacion": "Empleo informal",
+        "meta": "Un empleo",
+        "horas_semana": "16 a 29",
+        "horario": [
+          "Noche"
+        ],
+        "cuidados": [
+          "Niñas o niños"
+        ],
+        "dispositivo": "Computadora",
+        "habilidades": [
+          "Computación",
+          "Atención al cliente"
+        ],
+        "negocio": "No",
+        "documentos": [
+          "CURP",
+          "INE",
+          "RFC",
+          "Cuenta bancaria"
+        ],
+        "habilidad_excel": "Básico"
+      },
+      "acciones": {
+        "r10": "aplicado",
+        "r22": "inscrita"
+      },
+      "eventos": []
+    },
+    {
+      "alias": "yolanda",
+      "nombre": "Yolanda Sánchez",
+      "telefono": "668 555 0111",
+      "municipio": "Ahome",
+      "estado_seguimiento": "Nueva",
+      "dias_desde_registro": 2,
+      "medio_contacto": "Llamada",
+      "horario_contacto": "Tardes",
+      "respuestas": {
+        "municipio": "Ahome",
+        "edad": "60 o más",
+        "escolaridad": "Primaria",
+        "situacion": "Sin ingreso",
+        "meta": "No sé todavía",
+        "horas_semana": "30 o más",
+        "horario": [
+          "Mañana",
+          "Tarde"
+        ],
+        "cuidados": [
+          "Ninguna"
+        ],
+        "dispositivo": "Celular con wifi",
+        "habilidades": [
+          "Cocina",
+          "Cuidado de personas"
+        ],
+        "negocio": "Tengo una idea",
+        "documentos": [
+          "CURP",
+          "INE"
+        ]
+      },
+      "acciones": {},
+      "eventos": []
+    },
+    {
+      "alias": "brenda",
+      "nombre": "Brenda Cota",
+      "telefono": "668 555 0112",
+      "municipio": "Ahome",
+      "estado_seguimiento": "En curso",
+      "dias_desde_registro": 12,
+      "medio_contacto": "WhatsApp",
+      "horario_contacto": "Noches",
+      "respuestas": {
+        "municipio": "Ahome",
+        "edad": "25 a 34",
+        "escolaridad": "Preparatoria",
+        "situacion": "Negocio propio",
+        "meta": "Iniciar o hacer crecer un negocio",
+        "horas_semana": "Menos de 10",
+        "horario": [
+          "Noche"
+        ],
+        "cuidados": [
+          "Niñas o niños"
+        ],
+        "dispositivo": "Solo celular con datos",
+        "habilidades": [
+          "Ventas"
+        ],
+        "negocio": "Ya vendo",
+        "documentos": [
+          "CURP",
+          "INE"
+        ]
+      },
+      "acciones": {
+        "r16": "inscrita"
+      },
+      "eventos": [
+        "Se inscribió al taller de ventas por WhatsApp"
+      ]
+    },
+    {
+      "alias": "silvia",
+      "nombre": "Silvia Ochoa",
+      "telefono": "687 555 0113",
+      "municipio": "Guasave",
+      "estado_seguimiento": "Baja",
+      "dias_desde_registro": 26,
+      "medio_contacto": "Correo",
+      "horario_contacto": "Mañanas",
+      "respuestas": {
+        "municipio": "Guasave",
+        "edad": "35 a 44",
+        "escolaridad": "Universidad",
+        "situacion": "Empleo formal",
+        "meta": "Aprender algo nuevo",
+        "horas_semana": "Menos de 10",
+        "horario": [
+          "Fines de semana"
+        ],
+        "cuidados": [
+          "Niñas o niños"
+        ],
+        "dispositivo": "Computadora",
+        "habilidades": [
+          "Computación"
+        ],
+        "negocio": "No",
+        "documentos": [
+          "CURP",
+          "INE",
+          "RFC",
+          "Cuenta bancaria"
+        ]
+      },
+      "acciones": {},
+      "eventos": [
+        "Asesora registró: baja por falta de tiempo"
+      ]
+    },
+    {
+      "alias": "claudia",
+      "nombre": "Claudia Ramos",
+      "telefono": "668 555 0114",
+      "municipio": "Ahome",
+      "estado_seguimiento": "Contratada",
+      "dias_desde_registro": 19,
+      "medio_contacto": "WhatsApp",
+      "horario_contacto": "Tardes",
+      "respuestas": {
+        "municipio": "Ahome",
+        "edad": "35 a 44",
+        "escolaridad": "Secundaria",
+        "situacion": "Sin ingreso",
+        "meta": "Un empleo",
+        "horas_semana": "30 o más",
+        "horario": [
+          "Mañana"
+        ],
+        "cuidados": [
+          "Ninguna"
+        ],
+        "dispositivo": "Celular con wifi",
+        "habilidades": [
+          "Costura"
+        ],
+        "negocio": "No",
+        "documentos": [
+          "CURP",
+          "INE"
+        ]
+      },
+      "acciones": {
+        "r8": "contratada"
+      },
+      "eventos": [
+        "Asesora registró: contratada en taller de uniformes"
+      ]
+    },
+    {
+      "alias": "monica",
+      "nombre": "Mónica Leyva",
+      "telefono": "668 555 0115",
+      "municipio": "Ahome",
+      "estado_seguimiento": "Inscrita",
+      "dias_desde_registro": 6,
+      "medio_contacto": "Llamada",
+      "horario_contacto": "Mañanas",
+      "respuestas": {
+        "municipio": "Ahome",
+        "edad": "18 a 24",
+        "escolaridad": "Secundaria",
+        "situacion": "Sin ingreso",
+        "meta": "Iniciar o hacer crecer un negocio",
+        "horas_semana": "16 a 29",
+        "horario": [
+          "Mañana"
+        ],
+        "cuidados": [
+          "Niñas o niños"
+        ],
+        "dispositivo": "Solo celular con datos",
+        "habilidades": [
+          "Cocina"
+        ],
+        "negocio": "Tengo una idea",
+        "documentos": [
+          "CURP",
+          "INE"
+        ]
+      },
+      "acciones": {
+        "r14": "aplicado",
+        "r19": "inscrita"
+      },
+      "eventos": []
+    }
+  ],
+  "casos": [
+    {
+      "usuaria": "rosa",
+      "tipo": "juridica",
+      "urgencia": "pronta",
+      "estado": "nueva",
+      "dias": 1,
+      "contacto": {
+        "medio": "Llamada",
+        "horario": "Tardes",
+        "mensaje": ""
+      }
+    },
+    {
+      "usuaria": "yolanda",
+      "tipo": "psicologica",
+      "urgencia": "inmediata",
+      "estado": "nueva",
+      "dias": 0,
+      "contacto": {
+        "medio": "Mensaje de texto",
+        "horario": "Mañanas",
+        "mensaje": ""
+      }
+    },
+    {
+      "usuaria": "brenda",
+      "tipo": "ambas",
+      "urgencia": "pronta",
+      "estado": "en atención",
+      "dias": 5,
+      "contacto": {
+        "medio": "Solo dentro de la app",
+        "horario": "Noches",
+        "mensaje": ""
+      }
+    },
+    {
+      "usuaria": "silvia",
+      "tipo": "juridica",
+      "urgencia": "informativa",
+      "estado": "cerrada",
+      "dias": 20,
+      "contacto": {
+        "medio": "Llamada",
+        "horario": "Mañanas",
+        "mensaje": ""
+      }
+    }
+  ]
+}
