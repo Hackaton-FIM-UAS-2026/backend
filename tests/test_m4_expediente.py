@@ -89,3 +89,19 @@ class TestResumenArea(unittest.TestCase):
         visitas = [{"modulo": "psicologia", "fecha": "2026-11-27"}, {"modulo": "juridico", "fecha": "2026-11-27"}]
         r = resumen_area("especialista_psicologica", casos, visitas, hoy)
         self.assertEqual((r["abiertos"], r["urgentes"], r["nuevos_semana"], r["cerrados_mes"], r["visitas_hoy"]), (2, 1, 1, 1, 1))
+
+
+class TestAccesoYCitas(unittest.TestCase):
+    def test_especialista_solo_ve_expedientes_de_su_area(self):
+        from app.modulos.expediente.permisos import puede_abrir
+        casos = [{"area_asignada": "juridica", "estado": "asignada"}]
+        self.assertTrue(puede_abrir("especialista_juridica", casos))
+        self.assertFalse(puede_abrir("especialista_psicologica", casos))
+        self.assertFalse(puede_abrir("especialista_juridica", [{"area_asignada": None, "estado": "nueva"}]))
+        self.assertTrue(puede_abrir("especialista_psicologica", [{"area_asignada": "ambas", "estado": "en atención"}]))
+        self.assertTrue(puede_abrir("trabajo_social", []))
+
+    def test_franja_de_la_cita(self):
+        from app.modulos.expediente.permisos import franja_de
+        self.assertEqual(franja_de("09:30"), "mañana")
+        self.assertEqual(franja_de("13:00"), "tarde")

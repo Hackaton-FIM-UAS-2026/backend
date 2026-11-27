@@ -1,6 +1,6 @@
 """M4 · Expediente único por mujer (CURP), Trabajo Social y especialistas."""
 import re
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from typing import Literal
 
 from fastapi import APIRouter, Depends, HTTPException, Query
@@ -12,7 +12,7 @@ from app.db import servicio
 from app.dominio import diccionario
 from app.sensible import bitacora, cifrar, descifrar
 
-from .permisos import CONFIDENCIALES, area_de_rol, ocultar_curp, vista_expediente
+from .permisos import CONFIDENCIALES, area_de_rol, franja_de, ocultar_curp, puede_abrir, vista_expediente
 
 router = APIRouter(prefix="/panel", tags=["expediente (M4)"])
 
@@ -64,23 +64,85 @@ def solicitudes(s: Sesion = Depends(TS)):
     return [{k: v for k, v in c.items() if k != "_t"} for c in out]
 
 
+def _contactos(ids: list[str]) -> dict[str, dict]:
+    """Correo, teléfono y forma segura de contacto (la que eligió al pedir apoyo)."""
+    if not ids:
+        return {}
+    sb = servicio()
+    per = {p["usuaria_id"]: p for p in sb.table("perfiles").select("usuaria_id,nombre,correo,telefono").in_("usuaria_id", ids).execute().data}
+    sens = {x["usuaria_id"]: (descifrar(x["datos_cifrados"]) or {}) for x in
+            sb.table("expedientes_sensibles").select("usuaria_id,datos_cifrados").in_("usuaria_id", ids).execute().data}
+    out = {}
+    for uid in ids:
+        p, c = per.get(uid, {}), (sens.get(uid, {}).get("contacto") or {})
+        correo = p.get("correo") if p.get("correo") and not p["correo"].endswith("@sin-correo.demo.example") else None
+        out[uid] = {"nombre": p.get("nombre") or "Sin nombre", "correo": correo, "telefono": p.get("telefono"),
+                    "medio": c.get("medio") or None, "horario": c.get("horario") or None, "dejar_mensaje": bool(c.get("mensaje"))}
+    return out
+
+
+def _cita(c: dict) -> dict | None:
+    return {"fecha": c["cita_at"], "modalidad": c.get("cita_modalidad"), "nota": c.get("cita_nota")} if c.get("cita_at") else None
+
+
 @router.get("/casos")
 def casos(s: Sesion = Depends(CASOS)):
-    q = servicio().table("canalizaciones").select("folio,usuaria_id,area_asignada,estado,urgencia,updated_at") \
-        .neq("estado", "nueva").neq("estado", "cerrada")
-    filas = q.execute().data
+    filas = servicio().table("canalizaciones").select("folio,usuaria_id,area_asignada,estado,urgencia,updated_at,cita_at,cita_modalidad,cita_nota") \
+        .neq("estado", "nueva").neq("estado", "cerrada").execute().data
     if s.rol in ESPECIALIDAD:
         filas = [f for f in filas if f["area_asignada"] in ESPECIALIDAD[s.rol]]
-    per = _nombres(list({f["usuaria_id"] for f in filas}))
-    return [{"folio": f["folio"], "usuaria_id": f["usuaria_id"], "nombre": (per.get(f["usuaria_id"]) or {}).get("nombre") or "Sin nombre",
+    con = _contactos(list({f["usuaria_id"] for f in filas}))
+    bitacora(s.user_id, s.rol, "listar", "canalizaciones")
+    filas.sort(key=lambda f: (f["cita_at"] is None, f["cita_at"] or "", ORDEN_URG.get(f["urgencia"], 9)))
+    return [{"folio": f["folio"], "usuaria_id": f["usuaria_id"], **con.get(f["usuaria_id"], {}),
              "area": AREA_TEXTO.get(f["area_asignada"], "por definir"), "estado": f["estado"], "urgencia": f["urgencia"],
-             "fecha": sv.fecha_corta(f["updated_at"])} for f in filas]
+             "fecha": sv.fecha_corta(f["updated_at"]), "cita": _cita(f)} for f in filas]
+
+
+class CitaIn(BaseModel):
+    fecha: date
+    hora: str = Field(pattern=r"^([01]\d|2[0-3]):[0-5]\d$")
+    modalidad: Literal["presencial", "llamada", "videollamada"] = "presencial"
+    nota: str | None = Field(default=None, max_length=300)
+
+
+@router.patch("/casos/{folio}/cita")
+def programar_cita(folio: str, body: CitaIn, s: Sesion = Depends(CASOS)):
+    """La especialista (o Trabajo Social) programa la cita. Si es presencial, Recepción la ve como visita prevista."""
+    if body.fecha < date.today():
+        raise HTTPException(422, "Elige una fecha de hoy en adelante.")
+    sb = servicio()
+    c = sb.table("canalizaciones").select("id,usuaria_id,area_asignada,estado").eq("folio", folio).limit(1).execute().data
+    if not c:
+        raise HTTPException(404, "Caso no encontrado")
+    c = c[0]
+    if s.rol in ESPECIALIDAD and c["area_asignada"] not in ESPECIALIDAD[s.rol]:
+        raise HTTPException(403, "Este caso no está asignado a tu área")
+    cita_at = f"{body.fecha.isoformat()}T{body.hora}:00-07:00"   # hora de Sinaloa
+    cambios = {"cita_at": cita_at, "cita_modalidad": body.modalidad, "cita_nota": (body.nota or "").strip() or None}
+    if c["estado"] == "asignada":
+        cambios["estado"] = "contactada"
+    sb.table("canalizaciones").update(cambios).eq("id", c["id"]).execute()
+    if body.modalidad == "presencial":
+        modulo = {"especialista_juridica": "juridico", "especialista_psicologica": "psicologia"}.get(s.rol, "trabajo_social")
+        sb.table("visitas").insert({"usuaria_id": c["usuaria_id"], "fecha": body.fecha.isoformat(), "franja": franja_de(body.hora),
+                                    "modulo": modulo, "origen": "personal"}).execute()
+    area = {"especialista_juridica": "juridico", "especialista_psicologica": "psicologia"}.get(s.rol, "trabajo_social")
+    sb.table("expediente_eventos").insert({"usuaria_id": c["usuaria_id"], "version": 0, "fuente": "personal_semujeres", "autor": s.user_id,
+                                           "area": area, "texto": f"Cita {body.modalidad} el {sv.fecha_corta(cita_at)} a las {body.hora} ({folio})",
+                                           "texto_publico": f"Tiene cita con SEMujeres el {sv.fecha_corta(cita_at)}"}).execute()
+    bitacora(s.user_id, s.rol, "actualizar", "canalizaciones", folio, c["usuaria_id"])
+    return {"folio": folio, "cita": {"fecha": cita_at, "modalidad": body.modalidad, "nota": cambios["cita_nota"]}}
 
 
 @router.get("/expedientes")
 def buscar(q: str = Query(default="", max_length=60), s: Sesion = Depends(LECTORES)):
     t = q.strip()
     base = servicio().table("perfiles").select("usuaria_id,nombre,curp,colonia,municipio")
+    if s.rol in ESPECIALIDAD:   # Jurídico y Psicología: solo los expedientes que Trabajo Social les asignó
+        ids = [c["usuaria_id"] for c in servicio().table("canalizaciones").select("usuaria_id,area_asignada").execute().data
+               if c["area_asignada"] in ESPECIALIDAD[s.rol]]
+        base = base.in_("usuaria_id", list(set(ids)) or ["00000000-0000-0000-0000-000000000000"])
     if re.fullmatch(r"[A-Za-z]{4}\d{6}[A-Za-z0-9]{8}", t):
         filas = base.eq("curp", t.upper()).execute().data
     elif t:
@@ -102,7 +164,7 @@ def _armar(usuaria_id: str) -> dict:
     recursos = sb.table("recursos_usuaria").select("recurso_id,estado,updated_at").eq("usuaria_id", usuaria_id).execute().data
     titulos = {r["id"]: r["titulo"] for r in sb.table("recursos").select("id,titulo")
                .in_("id", [r["recurso_id"] for r in recursos] or ["-"]).execute().data}
-    canal = sb.table("canalizaciones").select("folio,area_asignada,urgencia,estado,created_at") \
+    canal = sb.table("canalizaciones").select("folio,area_asignada,urgencia,estado,created_at,cita_at,cita_modalidad,cita_nota") \
         .eq("usuaria_id", usuaria_id).order("created_at", desc=True).execute().data
     sens = sb.table("expedientes_sensibles").select("datos_cifrados").eq("usuaria_id", usuaria_id).execute().data
     datos_s = descifrar(sens[0]["datos_cifrados"]) if sens else {}
@@ -121,6 +183,7 @@ def _armar(usuaria_id: str) -> dict:
         "general": {
             "nombre": p.get("nombre"), "curp": ocultar_curp(p.get("curp")), "colonia": p.get("colonia"),
             "municipio": p.get("municipio"), "desde": sv.fecha_corta(p.get("created_at")),
+            "contacto": _contactos([usuaria_id]).get(usuaria_id),
             "datos": [legible(k, vals[k]) for k in GENERALES if k in vals],
         },
         "economico": {
@@ -130,7 +193,8 @@ def _armar(usuaria_id: str) -> dict:
         },
         "solicitudes": [{"folio": c["folio"], "area_asignada": c["area_asignada"], "urgencia": c["urgencia"],
                          "estado": c["estado"], "fecha": sv.fecha_corta(c["created_at"]),
-                         "resumen": (datos_s or {}).get("resumen"), "contacto": (datos_s or {}).get("contacto")} for c in canal],
+                         "resumen": (datos_s or {}).get("resumen"), "contacto": (datos_s or {}).get("contacto"),
+                         "cita": _cita(c)} for c in canal],
         "eventos": eventos,
         "notas": notas,
     }
@@ -138,7 +202,13 @@ def _armar(usuaria_id: str) -> dict:
 
 @router.get("/expedientes/{usuaria_id}")
 def ver(usuaria_id: str, s: Sesion = Depends(LECTORES)):
+    if s.rol in ESPECIALIDAD:
+        canal = servicio().table("canalizaciones").select("area_asignada,estado").eq("usuaria_id", usuaria_id).execute().data
+        if not puede_abrir(s.rol, canal):
+            raise HTTPException(403, "Este expediente no está asignado a tu área. Trabajo Social decide a qué área va cada caso.")
     exp = _armar(usuaria_id)
+    if s.rol not in ("trabajo_social", *ESPECIALIDAD):
+        exp["general"].pop("contacto", None)
     bitacora(s.user_id, s.rol, "leer", "expedientes", usuaria_id, usuaria_id)
     return {"id": exp["id"], "rol": s.rol, **vista_expediente(s.rol, exp)}
 
@@ -189,22 +259,28 @@ class AltaIn(BaseModel):
     telefono: str | None = Field(default=None, max_length=20)
 
 
+def abrir_o_crear(nombre: str, curp: str, telefono: str | None, autor: str, rol: str) -> tuple[str, bool]:
+    """Busca el expediente por CURP; si no existe, lo crea. Regresa (usuaria_id, ya_existia)."""
+    sb = servicio()
+    curp = curp.upper()
+    hay = sb.table("perfiles").select("usuaria_id").eq("curp", curp).limit(1).execute().data
+    if hay:
+        return hay[0]["usuaria_id"], True
+    u = sb.auth.admin.create_user({"email": f"{curp.lower()}@sin-correo.demo.example", "email_confirm": True,
+                                   "user_metadata": {"nombre": nombre}})
+    uid = u.user.id
+    sb.table("perfiles").upsert({"usuaria_id": uid, "nombre": nombre, "curp": curp, "telefono": telefono}).execute()
+    sb.table("expediente_eventos").insert({"usuaria_id": uid, "version": 0, "fuente": "personal_semujeres", "autor": autor,
+                                           "area": "general", "texto": "Se abrió su expediente en SEMujeres (llegó en persona)"}).execute()
+    bitacora(autor, rol, "crear", "perfiles", None, uid)
+    return uid, False
+
+
 @router.post("/expedientes")
 def alta(body: AltaIn, s: Sesion = Depends(TS)):
     """Mujer que llegó en persona: si su CURP ya existe se abre su expediente; si no, se crea."""
-    sb = servicio()
-    curp = body.curp.upper()
-    hay = sb.table("perfiles").select("usuaria_id").eq("curp", curp).limit(1).execute().data
-    if hay:
-        return {"usuaria_id": hay[0]["usuaria_id"], "existente": True}
-    u = sb.auth.admin.create_user({"email": f"{curp.lower()}@sin-correo.demo.example", "email_confirm": True,
-                                   "user_metadata": {"nombre": body.nombre}})
-    uid = u.user.id
-    sb.table("perfiles").upsert({"usuaria_id": uid, "nombre": body.nombre, "curp": curp, "telefono": body.telefono}).execute()
-    sb.table("expediente_eventos").insert({"usuaria_id": uid, "version": 0, "fuente": "personal_semujeres", "autor": s.user_id,
-                                           "area": "general", "texto": "Se abrió su expediente en SEMujeres (llegó en persona)"}).execute()
-    bitacora(s.user_id, s.rol, "crear", "perfiles", None, uid)
-    return {"usuaria_id": uid, "existente": False}
+    uid, existia = abrir_o_crear(body.nombre, body.curp, body.telefono, s.user_id, s.rol)
+    return {"usuaria_id": uid, "existente": existia}
 
 
 # ---------------------------------------------------------------- resumen por área
@@ -214,14 +290,16 @@ def resumen(s: Sesion = Depends(CASOS)):
     from datetime import date
     from .resumen import resumen_area
     sb = servicio()
-    casos = sb.table("canalizaciones").select("folio,usuaria_id,area_asignada,estado,urgencia,created_at").execute().data
+    casos = sb.table("canalizaciones").select("folio,usuaria_id,area_asignada,estado,urgencia,created_at,cita_at,cita_modalidad,cita_nota").execute().data
     visitas = sb.table("visitas").select("modulo,fecha").eq("fecha", date.today().isoformat()).execute().data
     r = resumen_area(s.rol, casos, visitas, date.today())
     mios = [c for c in casos if c["estado"] not in ("cerrada",) and (s.rol not in ESPECIALIDAD or c["area_asignada"] in ESPECIALIDAD[s.rol])]
     mios.sort(key=lambda c: (ORDEN_URG.get(c["urgencia"], 9), c["created_at"]))
     per = _nombres(list({c["usuaria_id"] for c in mios[:6]}))
     r["recientes"] = [{"folio": c["folio"], "usuaria_id": c["usuaria_id"], "nombre": (per.get(c["usuaria_id"]) or {}).get("nombre") or "Sin nombre",
-                       "estado": c["estado"], "urgencia": c["urgencia"], "hace": hace(c["created_at"])} for c in mios[:6]]
+                       "estado": c["estado"], "urgencia": c["urgencia"], "hace": hace(c["created_at"]), "cita": _cita(c)} for c in mios[:6]]
+    hoy = date.today().isoformat()
+    r["citas_proximas"] = sum(1 for c in mios if c.get("cita_at") and c["cita_at"][:10] >= hoy)
     bitacora(s.user_id, s.rol, "listar", "canalizaciones")
     return r
 

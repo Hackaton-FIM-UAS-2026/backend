@@ -102,14 +102,15 @@ def canalizar(body: CanalizacionIn, s: Sesion = Depends(usuaria)):
 @router.get("/me/canalizaciones")
 def mis_canalizaciones(s: Sesion = Depends(usuaria)):
     with como(s.token) as db:
-        filas = db.from_("canalizaciones").select("folio,estado,area_asignada,created_at,updated_at") \
+        filas = db.from_("canalizaciones").select("folio,estado,area_asignada,created_at,updated_at,cita_at,cita_modalidad") \
             .eq("usuaria_id", s.user_id).order("created_at", desc=True).execute().data
     area = {"juridica": "Área jurídica", "psicologica": "Área de psicología", "ambas": "Áreas jurídica y de psicología"}
     estado = {"nueva": "Recibida: Trabajo Social la está revisando", "asignada": "Asignada", "contactada": "Ya te contactaron",
               "en atención": "En atención", "cerrada": "Concluida"}
     return [{"folio": f["folio"], "estado": f["estado"], "estado_texto": estado.get(f["estado"], f["estado"]),
              "departamento": area.get(f["area_asignada"], "Trabajo Social"),
-             "fecha": sv.fecha_corta(f["created_at"]), "actualizada": sv.fecha_corta(f["updated_at"])} for f in filas]
+             "fecha": sv.fecha_corta(f["created_at"]), "actualizada": sv.fecha_corta(f["updated_at"]),
+             "cita": {"fecha": f["cita_at"], "modalidad": f["cita_modalidad"]} if f.get("cita_at") else None} for f in filas]
 
 
 @router.delete("/me/expediente-sensible")

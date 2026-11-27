@@ -68,3 +68,18 @@ def vista_expediente(rol: str, exp: dict) -> dict:
         "notas": notas,
         "bloqueos": bloqueos,
     }
+
+
+ESPECIALIDAD = {"especialista_juridica": {"juridica", "ambas"}, "especialista_psicologica": {"psicologica", "ambas"}}
+
+
+def puede_abrir(rol: str, canalizaciones: list[dict]) -> bool:
+    """Jurídico y Psicología solo abren expedientes que Trabajo Social les asignó."""
+    if rol not in ESPECIALIDAD:
+        return True
+    return any(c.get("area_asignada") in ESPECIALIDAD[rol] for c in canalizaciones)
+
+
+def franja_de(hora: str) -> str:
+    """«HH:MM» → franja de la visita prevista para Recepción."""
+    return "mañana" if int(hora.split(":")[0]) < 13 else "tarde"
