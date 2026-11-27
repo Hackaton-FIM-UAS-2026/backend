@@ -73,7 +73,7 @@ def mis_vacantes(s: Sesion = Depends(empresa)):
              "candidatas": cuenta.get(v["id"], 0)} for v in vac]
 
 
-ESCOLARIDAD = ("Primaria", "Secundaria", "Preparatoria", "Universidad")
+ESCOLARIDAD = ("Primaria", "Secundaria", "Media superior", "Licenciatura")
 
 
 class VacanteIn(BaseModel):
@@ -82,8 +82,8 @@ class VacanteIn(BaseModel):
     horario: Literal["Mañanas", "Tardes", "Noches", "Fines de semana", "Flexible"]
     sueldo: str = Field(min_length=2, max_length=60)
     ubicacion: str = Field(min_length=2, max_length=120)
-    escolaridad_minima: Literal["Primaria", "Secundaria", "Preparatoria", "Universidad"] | None = None
-    documentos: list[Literal["CURP", "INE", "RFC", "Cuenta bancaria"]] = Field(default_factory=list)
+    escolaridad_minima: Literal["Primaria", "Secundaria", "Media superior", "Licenciatura"] | None = None
+    documentos: list[Literal["CURP", "INE", "RFC", "Comprobante de domicilio"]] = Field(default_factory=list)
 
 
 def requisitos_de(body: VacanteIn) -> list[dict]:

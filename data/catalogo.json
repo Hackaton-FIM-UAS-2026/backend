@@ -107,9 +107,9 @@
       {
         "campo": "escolaridad",
         "op": ">=",
-        "valor": "Preparatoria",
+        "valor": "Media superior",
         "duro": true,
-        "label": "Preparatoria terminada"
+        "label": "Media superior terminada"
       },
       {
         "campo": "habilidad_excel",
@@ -276,9 +276,9 @@
       {
         "campo": "escolaridad",
         "op": ">=",
-        "valor": "Preparatoria",
+        "valor": "Media superior",
         "duro": true,
-        "label": "Preparatoria terminada"
+        "label": "Media superior terminada"
       },
       {
         "campo": "habilidad_excel",
@@ -409,9 +409,9 @@
       {
         "campo": "escolaridad",
         "op": ">=",
-        "valor": "Preparatoria",
+        "valor": "Media superior",
         "duro": true,
-        "label": "Preparatoria terminada"
+        "label": "Media superior terminada"
       },
       {
         "campo": "dispositivo",
@@ -421,13 +421,6 @@
         ],
         "duro": true,
         "label": "Tener computadora"
-      },
-      {
-        "campo": "tiene_cuenta_bancaria",
-        "op": "==",
-        "valor": "Sí",
-        "duro": false,
-        "label": "Tener cuenta bancaria"
       }
     ],
     "descripcion": "Responder mensajes de clientes desde casa. Se requiere internet estable.",
@@ -531,13 +524,6 @@
         "valor": "Sí",
         "duro": false,
         "label": "Tener RFC"
-      },
-      {
-        "campo": "tiene_cuenta_bancaria",
-        "op": "==",
-        "valor": "Sí",
-        "duro": false,
-        "label": "Tener cuenta bancaria"
       }
     ],
     "descripcion": "Crédito de 5,000 a 30,000 pesos para equipo o mercancía, con pagos semanales.",
@@ -945,13 +931,6 @@
         ],
         "duro": true,
         "label": "INE y CURP"
-      },
-      {
-        "campo": "tiene_cuenta_bancaria",
-        "op": "==",
-        "valor": "Sí",
-        "duro": false,
-        "label": "Tener cuenta bancaria"
       }
     ],
     "descripcion": "Apoyo mensual para pasajes mientras estudias un curso o la escuela.",

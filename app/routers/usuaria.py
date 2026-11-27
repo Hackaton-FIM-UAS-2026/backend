@@ -8,6 +8,7 @@ from .. import servicios as sv
 from ..auth import Sesion, usuaria
 from ..db import como, servicio
 from ..dominio import diccionario
+from ..dominio.acciones import decidir_accion, es_evento_de_accion
 from ..dominio.fusion import valores as valores_de
 from ..dominio.matching import recomendar
 
@@ -95,16 +96,24 @@ def detalle(recurso_id: str, s: Sesion = Depends(usuaria)):
 
 @router.post("/recursos/{recurso_id}/accion")
 def accion(recurso_id: str, body: Accion, s: Sesion = Depends(usuaria)):
-    estado = "aplicado" if body.accion == "aplicar" else "guardado"
     with como(s.token) as db:
         r = db.from_("recursos").select("id,titulo,url_accion").eq("id", recurso_id).limit(1).execute().data
     if not r:
         raise HTTPException(404, "No encontramos este recurso")
-    servicio().table("recursos_usuaria").upsert(
-        {"usuaria_id": s.user_id, "recurso_id": recurso_id, "estado": estado, "updated_at": sv.ahora_iso()}).execute()
-    verbo = "Aplicó a" if estado == "aplicado" else "Guardó"
-    sv.evento(s.user_id, f"{verbo} «{r[0]['titulo']}»", "usuaria_edito")
-    return {"estado": estado, "url_accion": r[0]["url_accion"]}
+    sb = servicio()
+    previo = sb.table("recursos_usuaria").select("estado").eq("usuaria_id", s.user_id) \
+        .eq("recurso_id", recurso_id).limit(1).execute().data
+    # Picar dos veces no duplica, y "Guardar" no baja a quien ya aplicó
+    estado, nuevo = decidir_accion(previo[0]["estado"] if previo else None, body.accion)
+    if nuevo:
+        fila = {"usuaria_id": s.user_id, "recurso_id": recurso_id, "estado": estado, "updated_at": sv.ahora_iso()}
+        # "Guardar" solo crea la fila: si otra petición ya la escribió (p. ej. "Aplicar"), no la pisa
+        escrito = sb.table("recursos_usuaria").upsert(fila, ignore_duplicates=estado == "guardado").execute().data
+        if not escrito:
+            return {"estado": "aplicado", "nuevo": False, "titulo": r[0]["titulo"], "url_accion": r[0]["url_accion"]}
+        verbo = "Aplicó a" if estado == "aplicado" else "Guardó"
+        sv.evento(s.user_id, f"{verbo} «{r[0]['titulo']}»", "usuaria_edito")
+    return {"estado": estado, "nuevo": nuevo, "titulo": r[0]["titulo"], "url_accion": r[0]["url_accion"]}
 
 
 @router.get("/seguimiento")
@@ -122,6 +131,8 @@ def seguimiento(s: Sesion = Depends(usuaria)):
     linea = []
     for e in evs:
         texto = e["texto"]
+        if es_evento_de_accion(texto):
+            continue  # ya aparece en la lista de sus recursos
         if e["fuente"] == "personal_semujeres":
             texto = texto.replace("Asesora registró:", "Tu asesora registró:")
         linea.append({"fecha": sv.fecha_corta(e["created_at"]), "texto": texto, "fuente": e["fuente"]})

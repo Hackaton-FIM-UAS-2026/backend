@@ -15,7 +15,8 @@ sys.path.insert(0, str(RAIZ))
 from app.dominio.fusion import fusionar, valores  # noqa: E402
 from app.dominio.matching import recomendar  # noqa: E402
 from app.dominio.motor_ruta import calcular_ruta, explicacion_respaldo  # noqa: E402
-from app.dominio.requisitos import evaluar_recurso  # noqa: E402
+from app.dominio.requisitos import OPS, evaluar_recurso  # noqa: E402
+from app.dominio.diccionario import CAMPOS, validar_valor  # noqa: E402
 
 CATALOGO = json.loads((Path(__file__).parent / "catalogo_prueba.json").read_text(encoding="utf-8"))
 HOY = date(2026, 11, 27)
@@ -24,7 +25,7 @@ MARIA = {"edad": "25 a 34", "municipio": "Ahome", "escolaridad": "Secundaria", "
          "meta": "Iniciar o hacer crecer un negocio", "horas_semana": "10 a 15", "horario": ["Mañana"],
          "cuidados": ["Niñas o niños"], "dispositivo": "Solo celular con datos", "habilidades": ["Cocina", "Ventas"],
          "negocio": "Ya vendo", "documentos": ["CURP", "INE"]}
-LUCIA = {"edad": "18 a 24", "municipio": "Ahome", "escolaridad": "Preparatoria", "situacion": "Sin ingreso",
+LUCIA = {"edad": "18 a 24", "municipio": "Ahome", "escolaridad": "Media superior", "situacion": "Sin ingreso",
          "meta": "Un empleo", "horas_semana": "30 o más", "horario": ["Mañana", "Tarde"], "cuidados": ["Ninguna"],
          "dispositivo": "Computadora", "habilidades": ["Atención al cliente", "Computación"], "negocio": "No",
          "documentos": ["CURP", "INE", "RFC"]}
@@ -110,6 +111,62 @@ class TestFusion(unittest.TestCase):
             fusionar({"campos": {}}, {"meta": "Ser astronauta"}, "test_base")
         with self.assertRaises(ValueError):
             fusionar({"campos": {}}, {"campo_inventado": "x"}, "test_base")
+
+
+class TestDiccionarioCoherente(unittest.TestCase):
+    def test_escolaridad_nueva(self):
+        self.assertEqual(CAMPOS["escolaridad"]["opciones"],
+                         ["Sin estudios", "Primaria", "Secundaria", "Media superior", "Licenciatura"])
+        self.assertNotIn("tiene_cuenta_bancaria", CAMPOS)
+        self.assertEqual(CAMPOS["documentos"]["opciones"], ["CURP", "INE", "RFC", "Comprobante de domicilio"])
+        self.assertEqual(CAMPOS["municipio_otro"]["tipo"], "texto")
+
+    def test_municipio_otro_se_guarda_y_no_cuenta(self):
+        f = fusionar({"campos": {}, "version": 0}, {"municipio": "Otro", "municipio_otro": " Topolobampo "}, "test_base")
+        self.assertEqual(f["expediente"]["campos"]["municipio_otro"]["valor"], "Topolobampo")
+        self.assertEqual(valores(f["expediente"])["municipio"], "Otro")
+
+    def test_valor_viejo_invalido(self):
+        with self.assertRaises(ValueError):
+            validar_valor("escolaridad", "Preparatoria")
+        with self.assertRaises(ValueError):
+            validar_valor("documentos", ["Cuenta bancaria"])
+
+    def test_rfc_desde_documentos(self):
+        exp = {"campos": {"documentos": {"valor": ["RFC"]}}}
+        self.assertEqual(valores(exp)["tiene_rfc"], "Sí")
+        exp["campos"]["tiene_rfc"] = {"valor": "No"}
+        self.assertEqual(valores(exp)["tiene_rfc"], "No")
+        self.assertNotIn("tiene_rfc", valores({"campos": {"documentos": {"valor": ["CURP"]}}}))
+
+    def test_catalogo_coherente(self):
+        for archivo in (RAIZ / "data" / "catalogo.json", Path(__file__).parent / "catalogo_prueba.json"):
+            for r in json.loads(archivo.read_text(encoding="utf-8")):
+                for q in r.get("requisitos") or []:
+                    if q.get("op") not in OPS:
+                        continue
+                    with self.subTest(archivo=archivo.name, recurso=r["id"], campo=q["campo"]):
+                        self.assertIn(q["campo"], CAMPOS)
+                        opciones = CAMPOS[q["campo"]].get("opciones")
+                        if opciones:
+                            esperados = q["valor"] if isinstance(q["valor"], list) else [q["valor"]]
+                            for v in esperados:
+                                self.assertIn(v, opciones)
+
+    def test_pesos_ruta_coherentes(self):
+        def condiciones(c):
+            if "all" in c or "any" in c:
+                for x in c.get("all", []) + c.get("any", []):
+                    yield from condiciones(x)
+            else:
+                yield c
+        pesos = json.loads((RAIZ / "app" / "dominio" / "pesos_ruta.json").read_text(encoding="utf-8"))
+        conds = [s["si"] for s in pesos["senales"]] + [pesos["puente_capacitacion"]["si"]]
+        for c in (x for raiz in conds for x in condiciones(raiz)):
+            opciones = CAMPOS[c["campo"]].get("opciones")
+            for v in c["valor"] if isinstance(c["valor"], list) else [c["valor"]]:
+                with self.subTest(campo=c["campo"], valor=v):
+                    self.assertIn(v, opciones)
 
 
 class TestMatching(unittest.TestCase):

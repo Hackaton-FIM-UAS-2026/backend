@@ -105,4 +105,8 @@ def fusionar(expediente: dict, nuevos: dict, fuente: str, confianza: float = 1.0
 
 def valores(expediente: dict) -> dict:
     """campo → valor, sin los datos inferidos que falta confirmar."""
-    return {k: c["valor"] for k, c in (expediente.get("campos") or {}).items() if not c.get("por_confirmar")}
+    v = {k: c["valor"] for k, c in (expediente.get("campos") or {}).items() if not c.get("por_confirmar")}
+    # Quien marcó RFC en sus documentos ya tiene RFC (si contestó la pregunta suelta, gana su respuesta)
+    if "tiene_rfc" not in v and "RFC" in (v.get("documentos") or []):
+        v["tiene_rfc"] = "Sí"
+    return v

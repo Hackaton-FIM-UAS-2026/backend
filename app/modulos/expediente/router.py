@@ -24,7 +24,7 @@ NOTAS = CASOS
 ORDEN_URG = {"inmediata": 0, "pronta": 1, "informativa": 2}
 AREA_TEXTO = {"juridica": "jurídica", "psicologica": "psicológica", "ambas": "jurídica y psicológica"}
 AREA_EVENTO = {"juridica": "juridico", "psicologica": "psicologia", "ambas": "trabajo_social"}
-GENERALES = ("edad", "municipio", "escolaridad", "cuidados", "horas_semana", "dispositivo")
+GENERALES = ("edad", "municipio", "municipio_otro", "escolaridad", "cuidados", "horas_semana", "dispositivo")
 ESPECIALIDAD = {"especialista_juridica": {"juridica", "ambas"}, "especialista_psicologica": {"psicologica", "ambas"}}
 
 

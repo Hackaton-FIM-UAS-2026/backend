@@ -17,7 +17,7 @@ TEST_BASE = [
     {"campo": "municipio", "etiqueta": "Municipio", "pregunta": "¿En qué municipio vives?", "tipo": "unica",
      "opciones": ["Ahome", "Guasave", "El Fuerte", "Otro"]},
     {"campo": "escolaridad", "etiqueta": "Escolaridad", "pregunta": "¿Hasta qué grado estudiaste?", "tipo": "unica", "ordinal": True,
-     "opciones": ["Primaria", "Secundaria", "Preparatoria", "Universidad"]},
+     "opciones": ["Sin estudios", "Primaria", "Secundaria", "Media superior", "Licenciatura"]},
     {"campo": "situacion", "etiqueta": "Situación", "pregunta": "¿Cuál es tu situación hoy?", "tipo": "unica",
      "opciones": ["Sin ingreso", "Empleo informal", "Empleo formal", "Negocio propio"]},
     {"campo": "meta", "etiqueta": "Meta", "pregunta": "¿Qué te gustaría lograr?", "tipo": "unica",
@@ -35,7 +35,7 @@ TEST_BASE = [
     {"campo": "negocio", "etiqueta": "Negocio", "pregunta": "¿Tienes un negocio o una idea?", "tipo": "unica",
      "opciones": ["No", "Tengo una idea", "Ya vendo"]},
     {"campo": "documentos", "etiqueta": "Documentos", "pregunta": "¿Con qué documentos cuentas?", "tipo": "multiple",
-     "opciones": ["CURP", "INE", "RFC", "Cuenta bancaria"]},
+     "opciones": ["CURP", "INE", "RFC", "Comprobante de domicilio"]},
 ]
 
 # Campos que NO están en el test base: se preguntan solo cuando un recurso los pide.
@@ -46,13 +46,13 @@ ENTREVISTA = [
      "opciones": ["Nada", "Básico", "Intermedio"]},
     {"campo": "tiene_experiencia", "etiqueta": "Experiencia laboral", "pregunta": "¿Has trabajado antes con un patrón o en una empresa?", "tipo": "unica",
      "opciones": ["Sí", "No"]},
-    {"campo": "tiene_cuenta_bancaria", "etiqueta": "Cuenta bancaria", "pregunta": "¿Tienes cuenta en un banco?", "tipo": "unica",
-     "opciones": ["Sí", "No"]},
 ]
 
-# Campos que solo registra el personal (fuente personal_semujeres).
+# Campos de texto libre (no cuentan en "Mi avance"): el que registra el personal
+# (fuente personal_semujeres) y el municipio que ella escribe cuando elige «Otro».
 PERSONAL = [
     {"campo": "estado_programa", "etiqueta": "Situación en el programa", "tipo": "texto"},
+    {"campo": "municipio_otro", "etiqueta": "Otro municipio", "tipo": "texto"},
 ]
 
 CAMPOS: dict[str, dict] = {c["campo"]: c for c in TEST_BASE + ENTREVISTA + PERSONAL}

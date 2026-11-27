@@ -101,7 +101,7 @@
       "respuestas": {
         "municipio": "Ahome",
         "edad": "18 a 24",
-        "escolaridad": "Preparatoria",
+        "escolaridad": "Media superior",
         "situacion": "Sin ingreso",
         "meta": "Un empleo",
         "horas_semana": "30 o más",
@@ -183,7 +183,7 @@
       "respuestas": {
         "municipio": "Ahome",
         "edad": "25 a 34",
-        "escolaridad": "Preparatoria",
+        "escolaridad": "Media superior",
         "situacion": "Sin ingreso",
         "meta": "Un empleo",
         "horas_semana": "16 a 29",
@@ -202,8 +202,7 @@
         "documentos": [
           "CURP",
           "INE",
-          "RFC",
-          "Cuenta bancaria"
+          "RFC"
         ],
         "tiene_experiencia": "Sí"
       },
@@ -230,7 +229,7 @@
       "respuestas": {
         "municipio": "Guasave",
         "edad": "25 a 34",
-        "escolaridad": "Universidad",
+        "escolaridad": "Licenciatura",
         "situacion": "Empleo formal",
         "meta": "Iniciar o hacer crecer un negocio",
         "horas_semana": "16 a 29",
@@ -249,8 +248,7 @@
         "documentos": [
           "CURP",
           "INE",
-          "RFC",
-          "Cuenta bancaria"
+          "RFC"
         ]
       },
       "acciones": {
@@ -334,11 +332,9 @@
         "documentos": [
           "CURP",
           "INE",
-          "RFC",
-          "Cuenta bancaria"
+          "RFC"
         ],
-        "tiene_rfc": "Sí",
-        "tiene_cuenta_bancaria": "Sí"
+        "tiene_rfc": "Sí"
       },
       "acciones": {
         "r13": "aplicado",
@@ -449,7 +445,7 @@
       "respuestas": {
         "municipio": "Ahome",
         "edad": "25 a 34",
-        "escolaridad": "Preparatoria",
+        "escolaridad": "Media superior",
         "situacion": "Empleo informal",
         "meta": "Un empleo",
         "horas_semana": "16 a 29",
@@ -468,8 +464,7 @@
         "documentos": [
           "CURP",
           "INE",
-          "RFC",
-          "Cuenta bancaria"
+          "RFC"
         ],
         "habilidad_excel": "Básico"
       },
@@ -532,7 +527,7 @@
       "respuestas": {
         "municipio": "Ahome",
         "edad": "25 a 34",
-        "escolaridad": "Preparatoria",
+        "escolaridad": "Media superior",
         "situacion": "Negocio propio",
         "meta": "Iniciar o hacer crecer un negocio",
         "horas_semana": "Menos de 10",
@@ -573,7 +568,7 @@
       "respuestas": {
         "municipio": "Guasave",
         "edad": "35 a 44",
-        "escolaridad": "Universidad",
+        "escolaridad": "Licenciatura",
         "situacion": "Empleo formal",
         "meta": "Aprender algo nuevo",
         "horas_semana": "Menos de 10",
@@ -591,8 +586,7 @@
         "documentos": [
           "CURP",
           "INE",
-          "RFC",
-          "Cuenta bancaria"
+          "RFC"
         ]
       },
       "acciones": {},

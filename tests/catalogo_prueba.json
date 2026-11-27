@@ -105,9 +105,9 @@
       {
         "campo": "escolaridad",
         "op": ">=",
-        "valor": "Preparatoria",
+        "valor": "Media superior",
         "duro": true,
-        "label": "Preparatoria terminada"
+        "label": "Media superior terminada"
       },
       {
         "campo": "habilidad_excel",

@@ -23,8 +23,8 @@
        {"campo": "cuidados", "op": "any_not_in", "valor": ["Ninguna"]}
      ]},
      "suma": {"emprendimiento": 1, "capacitacion": 1}},
-    {"id": "prepa", "texto": "Terminaste la preparatoria o más",
-     "si": {"campo": "escolaridad", "op": ">=", "valor": "Preparatoria"},
+    {"id": "prepa", "texto": "Terminaste la media superior o más",
+     "si": {"campo": "escolaridad", "op": ">=", "valor": "Media superior"},
      "suma": {"empleabilidad": 1}},
     {"id": "sin_digital", "texto": "Todavía no usas la computadora y quieres un empleo",
      "si": {"all": [

@@ -22,7 +22,7 @@ C_REPO = {"id": "c-repo", "titulo": "Repostería", "tipo": "curso", "proveedor":
           "etiquetas": {"pide": [], "da": [], "temas": ["alimentos"]}}
 
 MARIA = {"escolaridad": "Secundaria", "habilidad_excel": "Nada", "documentos": ["CURP", "INE"]}
-LUCIA_CON_EXCEL = {"escolaridad": "Preparatoria", "habilidad_excel": "Básico", "tiene_rfc": "Sí"}
+LUCIA_CON_EXCEL = {"escolaridad": "Media superior", "habilidad_excel": "Básico", "tiene_rfc": "Sí"}
 
 
 class TestCaminos(unittest.TestCase):
