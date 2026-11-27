@@ -35,7 +35,13 @@ def registro(body: Registro, s: Sesion = Depends(usuaria)):
     """Se llama justo después de signUp/signIn. Guarda el consentimiento (LFPDPPP)."""
     if not body.acepto_privacidad:
         raise HTTPException(400, "Se necesita aceptar el aviso de privacidad")
-    datos = {"usuaria_id": s.user_id, "correo": s.correo, "acepto_privacidad_at": sv.ahora_iso()}
+    previo = servicio().table("perfiles").select("nombre,acepto_privacidad_at").eq("usuaria_id", s.user_id) \
+        .limit(1).execute().data
+    previo = previo[0] if previo else {}
+    datos = {"usuaria_id": s.user_id, "correo": s.correo}
+    # La fecha del consentimiento es la de la PRIMERA vez que aceptó: no se pisa en cada inicio de sesión
+    if not previo.get("acepto_privacidad_at"):
+        datos["acepto_privacidad_at"] = sv.ahora_iso()
     if body.nombre:
         datos["nombre"] = body.nombre.strip()
     if body.telefono:
@@ -44,8 +50,7 @@ def registro(body: Registro, s: Sesion = Depends(usuaria)):
     # Por si el trigger no corrió (usuarias creadas antes de la migración)
     servicio().table("expedientes").upsert({"usuaria_id": s.user_id}, ignore_duplicates=True).execute()
     # Las cuentas de Google llegan sin nombre: el front lo pide si aquí regresa vacío
-    perfil = servicio().table("perfiles").select("nombre").eq("usuaria_id", s.user_id).limit(1).execute().data
-    return {"ok": True, "nombre": (perfil[0].get("nombre") if perfil else None) or None}
+    return {"ok": True, "nombre": datos.get("nombre") or previo.get("nombre") or None}
 
 
 @router.get("/expediente")

@@ -110,9 +110,10 @@ class _Perfiles:
 
     def execute(self):
         if self.op == "upsert":
-            self.bd.update({k: v for k, v in self.fila.items() if k in ("nombre", "telefono")})
+            self.bd.update({k: v for k, v in self.fila.items() if k in ("nombre", "telefono", "acepto_privacidad_at")})
             return SimpleNamespace(data=[self.fila])
-        return SimpleNamespace(data=[{"nombre": self.bd.get("nombre")}])
+        return SimpleNamespace(data=[{"nombre": self.bd.get("nombre"), "acepto_privacidad_at": self.bd.get("acepto_privacidad_at")}]
+                               if self.bd else [])
 
 
 class TestRegistro(unittest.TestCase):
@@ -134,6 +135,16 @@ class TestRegistro(unittest.TestCase):
 
     def test_guarda_nombre_nuevo(self):
         self.assertEqual(self.registrar({}, nombre=" Rosa ")["nombre"], "Rosa")
+
+    def test_conserva_fecha_del_primer_consentimiento(self):
+        bd = {"nombre": "Lucía", "acepto_privacidad_at": "2026-11-01"}
+        self.registrar(bd)
+        self.assertEqual(bd["acepto_privacidad_at"], "2026-11-01")
+
+    def test_primer_consentimiento_se_guarda(self):
+        bd = {}
+        self.registrar(bd)
+        self.assertEqual(bd["acepto_privacidad_at"], "2026-11-26")
 
 
 if __name__ == "__main__":
