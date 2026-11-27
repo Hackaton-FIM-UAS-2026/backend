@@ -120,6 +120,7 @@ class TestDiccionarioCoherente(unittest.TestCase):
         self.assertNotIn("tiene_cuenta_bancaria", CAMPOS)
         self.assertEqual(CAMPOS["documentos"]["opciones"], ["CURP", "INE", "RFC", "Comprobante de domicilio"])
         self.assertEqual(CAMPOS["municipio_otro"]["tipo"], "texto")
+        self.assertEqual(CAMPOS["habilidades_otra"]["tipo"], "texto")
 
     def test_municipio_otro_se_guarda_y_no_cuenta(self):
         f = fusionar({"campos": {}, "version": 0}, {"municipio": "Otro", "municipio_otro": " Topolobampo "}, "test_base")

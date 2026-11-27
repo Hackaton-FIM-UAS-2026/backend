@@ -43,7 +43,9 @@ def registro(body: Registro, s: Sesion = Depends(usuaria)):
     servicio().table("perfiles").upsert(datos).execute()
     # Por si el trigger no corrió (usuarias creadas antes de la migración)
     servicio().table("expedientes").upsert({"usuaria_id": s.user_id}, ignore_duplicates=True).execute()
-    return {"ok": True}
+    # Las cuentas de Google llegan sin nombre: el front lo pide si aquí regresa vacío
+    perfil = servicio().table("perfiles").select("nombre").eq("usuaria_id", s.user_id).limit(1).execute().data
+    return {"ok": True, "nombre": (perfil[0].get("nombre") if perfil else None) or None}
 
 
 @router.get("/expediente")

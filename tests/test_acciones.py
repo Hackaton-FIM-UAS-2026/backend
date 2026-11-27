@@ -90,5 +90,51 @@ class TestRutaAccion(unittest.TestCase):
         self.assertEqual((bd["estado"], eventos, out["nuevo"]), ("aplicado", ["Aplicó a «Cajera»"], True))
 
 
+class _Perfiles:
+    def __init__(self, bd):
+        self.bd, self.op = bd, None
+
+    def upsert(self, fila, **_):
+        self.op, self.fila = "upsert", fila
+        return self
+
+    def select(self, *_):
+        self.op = "select"
+        return self
+
+    def eq(self, *_):
+        return self
+
+    def limit(self, *_):
+        return self
+
+    def execute(self):
+        if self.op == "upsert":
+            self.bd.update({k: v for k, v in self.fila.items() if k in ("nombre", "telefono")})
+            return SimpleNamespace(data=[self.fila])
+        return SimpleNamespace(data=[{"nombre": self.bd.get("nombre")}])
+
+
+class TestRegistro(unittest.TestCase):
+    """El front necesita saber si ya tiene nombre (cuentas de Google llegan sin él)."""
+
+    def registrar(self, bd, **body):
+        from app.routers import usuaria as u
+        nada = SimpleNamespace(execute=lambda: SimpleNamespace(data=[]))
+        tablas = {"perfiles": _Perfiles(bd), "expedientes": SimpleNamespace(upsert=lambda *a, **k: nada)}
+        with patch.object(u, "servicio", lambda: SimpleNamespace(table=lambda n: tablas[n])), \
+                patch.object(u.sv, "ahora_iso", lambda: "2026-11-26"):
+            return u.registro(u.Registro(acepto_privacidad=True, **body), SimpleNamespace(user_id="x", correo="a@b.c"))
+
+    def test_sin_nombre(self):
+        self.assertIsNone(self.registrar({})["nombre"])
+
+    def test_conserva_nombre_guardado(self):
+        self.assertEqual(self.registrar({"nombre": "Lucía"})["nombre"], "Lucía")
+
+    def test_guarda_nombre_nuevo(self):
+        self.assertEqual(self.registrar({}, nombre=" Rosa ")["nombre"], "Rosa")
+
+
 if __name__ == "__main__":
     unittest.main()

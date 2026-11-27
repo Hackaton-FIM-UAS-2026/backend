@@ -49,10 +49,11 @@ ENTREVISTA = [
 ]
 
 # Campos de texto libre (no cuentan en "Mi avance"): el que registra el personal
-# (fuente personal_semujeres) y el municipio que ella escribe cuando elige «Otro».
+# (fuente personal_semujeres) y lo que ella escribe cuando elige «Otro»/«Otra» en el test.
 PERSONAL = [
     {"campo": "estado_programa", "etiqueta": "Situación en el programa", "tipo": "texto"},
     {"campo": "municipio_otro", "etiqueta": "Otro municipio", "tipo": "texto"},
+    {"campo": "habilidades_otra", "etiqueta": "Otra habilidad", "tipo": "texto"},
 ]
 
 CAMPOS: dict[str, dict] = {c["campo"]: c for c in TEST_BASE + ENTREVISTA + PERSONAL}
