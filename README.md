@@ -40,19 +40,30 @@ uvicorn app.main:app --reload
 
 La documentación viva de los endpoints queda en **http://localhost:8000/docs** (sirve como "documentación de endpoints" del entregable de Backend).
 
-Cargar datos:
+Cargar datos (todos ficticios):
 
 ```bash
-python -m scripts.cargar_catalogo        # data/catalogo.json → tabla recursos (+ embeddings si hay GEMINI_API_KEY)
-python -m scripts.crear_demo             # María, Lucía, Rosa + asesora, jurídica, psicológica, coordinación
+python -m scripts.cargar_catalogo        # data/empresas.json + data/catalogo.json → empresas y recursos (+ embeddings con GEMINI_API_KEY)
+python -m scripts.crear_demo             # cuentas <alias>@demo.example (2 por rol), casos, visitas · contraseña: DEMO_PASSWORD
+python -m scripts.etiquetar_catalogo     # etiqueta con Claude solo los recursos sin etiquetas (no usar --todos: pisa las curadas)
 ```
 
-`ANTHROPIC_API_KEY` y `GEMINI_API_KEY` son opcionales: sin ellas todo funciona con plantillas y similitud neutra. Sirve para que Frontend trabaje desde ya.
+`crear_demo` también **restaura la demo**: regresa casos, visitas y actividad de las cuentas de demo a su estado inicial.
 
-## 3. Desplegar en Render
+`ANTHROPIC_API_KEY` y `GEMINI_API_KEY` son opcionales: sin ellas el asistente usa su respaldo por palabras clave y el matching usa similitud neutra. La llave de Anthropic debe ser de un **workspace** (Console → Settings → Workspaces → empoderate → API Keys) y la cuenta debe tener saldo.
 
-New → **Blueprint** → este repo (lee `render.yaml`) → llena las variables. En `CORS_ORIGINS` pon la URL del front (Vercel/Netlify ya están permitidos por patrón).
-El plan gratuito se duerme: **5 minutos antes de presentar abran `/salud`** (o usen Railway).
+## 3. Desplegar en Vercel
+
+El backend es el proyecto `empoderate-api` (FastAPI vía `index.py` + `vercel.json`):
+
+```bash
+npx vercel deploy --prod --yes           # desde esta carpeta
+```
+
+- Las variables de producción se administran con `npx vercel env ls|add|rm` (nunca en el código).
+- `render.yaml` debe seguir en `.vercelignore`, o Vercel lo confunde con servicios.
+- **Vercel solo despliega si el último commit es de un miembro del equipo de Vercel.** Si el último commit es de alguien que no está en el equipo, la dueña del proyecto hace un commit encima (o se agrega a esa persona al equipo) y vuelve a desplegar.
+- Si una migración nueva cambia opciones del test (p. ej. escolaridad), **despliega primero el backend y después el frontend**: el front nuevo manda valores que el backend viejo rechaza.
 
 ## 4. Pruebas
 
