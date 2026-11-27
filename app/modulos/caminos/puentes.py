@@ -37,12 +37,12 @@ def armar_caminos(valores: dict, recursos: list[dict], limite: int = 3) -> list[
             for c in cursos:
                 if c["id"] not in usados and f["campo"] in (c.get("etiquetas") or {}).get("da", []):
                     usados.add(c["id"])
-                    puentes.append({"recurso": _resumen(c, "modalidad", "costo"), "motivo": "te_falta", "para": f["label"]})
+                    puentes.append({"recurso": _resumen(c, "modalidad", "costo", "horario", "ubicacion"), "motivo": "te_falta", "para": f["label"]})
         temas = set((r.get("etiquetas") or {}).get("temas", []))
         for c in cursos:
             if c["id"] not in usados and temas & set((c.get("etiquetas") or {}).get("temas", [])):
                 usados.add(c["id"])
-                puentes.append({"recurso": _resumen(c, "modalidad", "costo"), "motivo": "tema", "para": None})
+                puentes.append({"recurso": _resumen(c, "modalidad", "costo", "horario", "ubicacion"), "motivo": "tema", "para": None})
                 break
         caminos.append({
             "meta": {**_resumen(r, "horario", "ubicacion", "sueldo"), "cumplidos": ev["cumplidos"], "total": ev["total"]},
