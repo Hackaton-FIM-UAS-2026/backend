@@ -95,7 +95,7 @@ def detalle(recurso_id: str, s: Sesion = Depends(usuaria)):
         mio = db.from_("recursos_usuaria").select("estado").eq("recurso_id", recurso_id).execute().data
     return {
         **evaluado,
-        "preguntas": sv.preguntas_para(evaluado["faltantes"], r),
+        "preguntas": sv.preguntas_para(evaluado["faltantes"], r, vals),
         "explicacion": sv.explicar_recurso(evaluado, vals, ruta),
         "mi_estado": mio[0]["estado"] if mio else None,
     }
@@ -149,6 +149,7 @@ def seguimiento(s: Sesion = Depends(usuaria)):
         "total": diccionario.TOTAL_PERFIL,
         "historial": linea,
         "recursos": [{"id": m["recurso_id"], "estado": m["estado"], "titulo": (m.get("recursos") or {}).get("titulo"),
+                      "tipo": (m.get("recursos") or {}).get("tipo"),
                       "fecha": sv.fecha_corta(m["updated_at"])} for m in mios],
         "por_revisar": exp.get("conflictos") or [],
     }

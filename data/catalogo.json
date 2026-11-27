@@ -1439,5 +1439,646 @@
       ]
     },
     "alerta_ia": null
+  },
+  {
+    "id": "v-col-asistente",
+    "titulo": "Asistente educativa",
+    "proveedor": "Colegio Latinoamericano",
+    "empresa": "colegio-latinoamericano",
+    "tipo": "vacante",
+    "rutas": [
+      "empleabilidad"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Mañanas",
+    "horas_semana": 30,
+    "costo": "Sueldo",
+    "sueldo": "$7,500 al mes",
+    "ubicacion": "Los Mochis",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": "2026-12-31",
+    "requisitos": [
+      {
+        "campo": "edad",
+        "op": ">=",
+        "valor": "18 a 24",
+        "duro": true,
+        "label": "Ser mayor de 18"
+      },
+      {
+        "campo": "escolaridad",
+        "op": ">=",
+        "valor": "Media superior",
+        "duro": true,
+        "label": "Media superior terminada"
+      },
+      {
+        "campo": "documentos",
+        "op": "contains",
+        "valor": [
+          "INE"
+        ],
+        "duro": true,
+        "label": "INE vigente"
+      },
+      {
+        "campo": "habilidades",
+        "op": "contains_any",
+        "valor": [
+          "Cuidado de personas"
+        ],
+        "duro": false,
+        "label": "Gusto por cuidar a niñas y niños"
+      }
+    ],
+    "descripcion": "Apoyar a la maestra de grupo con material, recreo y acompañamiento de las niñas y niños de primaria.",
+    "url_accion": "#",
+    "verificado_el": "2026-11",
+    "estado_revision": "aprobada",
+    "alerta_ia": null,
+    "etiquetas": {
+      "pide": [
+        "edad",
+        "escolaridad",
+        "documentos",
+        "habilidades"
+      ],
+      "da": [],
+      "temas": [
+        "educación",
+        "cuidado infantil"
+      ]
+    }
+  },
+  {
+    "id": "v-col-intendencia",
+    "titulo": "Auxiliar de intendencia",
+    "proveedor": "Colegio Latinoamericano",
+    "empresa": "colegio-latinoamericano",
+    "tipo": "vacante",
+    "rutas": [
+      "empleabilidad"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Tardes",
+    "horas_semana": 30,
+    "costo": "Sueldo",
+    "sueldo": "$6,800 al mes",
+    "ubicacion": "Los Mochis",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": "2026-12-31",
+    "requisitos": [
+      {
+        "campo": "edad",
+        "op": ">=",
+        "valor": "18 a 24",
+        "duro": true,
+        "label": "Ser mayor de 18"
+      },
+      {
+        "campo": "documentos",
+        "op": "contains",
+        "valor": [
+          "INE"
+        ],
+        "duro": true,
+        "label": "INE vigente"
+      },
+      {
+        "campo": "habilidades",
+        "op": "contains",
+        "valor": [
+          "Limpieza"
+        ],
+        "duro": false,
+        "label": "Experiencia en limpieza (deseable)"
+      }
+    ],
+    "descripcion": "Limpieza de salones, patios y baños al terminar las clases. Horario fijo de lunes a viernes.",
+    "url_accion": "#",
+    "verificado_el": "2026-11",
+    "estado_revision": "aprobada",
+    "alerta_ia": null,
+    "etiquetas": {
+      "pide": [
+        "edad",
+        "documentos",
+        "habilidades"
+      ],
+      "da": [],
+      "temas": [
+        "limpieza",
+        "escuela"
+      ]
+    }
+  },
+  {
+    "id": "v-col-cafeteria",
+    "titulo": "Encargada de cafetería escolar",
+    "proveedor": "Colegio Latinoamericano",
+    "empresa": "colegio-latinoamericano",
+    "tipo": "vacante",
+    "rutas": [
+      "empleabilidad"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Mañanas",
+    "horas_semana": 25,
+    "costo": "Sueldo",
+    "sueldo": "$7,000 al mes",
+    "ubicacion": "Los Mochis",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": "2026-12-31",
+    "requisitos": [
+      {
+        "campo": "edad",
+        "op": ">=",
+        "valor": "18 a 24",
+        "duro": true,
+        "label": "Ser mayor de 18"
+      },
+      {
+        "campo": "escolaridad",
+        "op": ">=",
+        "valor": "Secundaria",
+        "duro": true,
+        "label": "Secundaria terminada"
+      },
+      {
+        "campo": "habilidades",
+        "op": "contains",
+        "valor": [
+          "Cocina"
+        ],
+        "duro": false,
+        "label": "Saber cocinar"
+      }
+    ],
+    "descripcion": "Preparar y vender desayunos y refrigerios saludables para alumnos y maestros.",
+    "url_accion": "#",
+    "verificado_el": "2026-11",
+    "estado_revision": "aprobada",
+    "alerta_ia": null,
+    "etiquetas": {
+      "pide": [
+        "edad",
+        "escolaridad",
+        "habilidades"
+      ],
+      "da": [],
+      "temas": [
+        "alimentos",
+        "ventas"
+      ]
+    }
+  },
+  {
+    "id": "c-col-primeros-auxilios",
+    "titulo": "Primeros auxilios básicos",
+    "proveedor": "Colegio Latinoamericano",
+    "tipo": "curso",
+    "rutas": [
+      "capacitacion",
+      "empleabilidad"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Fines de semana",
+    "horas_semana": 3,
+    "costo": "Gratis",
+    "ubicacion": "Los Mochis",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": "2026-12-31",
+    "requisitos": [],
+    "descripcion": "Curso práctico de 3 sábados: qué hacer ante golpes, quemaduras y atragantamiento. Útil para cuidar niñas, niños y personas mayores.",
+    "url_accion": "#",
+    "verificado_el": "2026-11",
+    "estado_revision": "aprobada",
+    "alerta_ia": null,
+    "etiquetas": {
+      "pide": [],
+      "da": [
+        "tiene_experiencia"
+      ],
+      "temas": [
+        "cuidado infantil",
+        "educación",
+        "salud"
+      ]
+    },
+    "empresa": "colegio-latinoamericano"
+  },
+  {
+    "id": "v-hk-mostrador",
+    "titulo": "Vendedora de mostrador",
+    "proveedor": "Hong Kong · Pastelería y Panificadora",
+    "empresa": "hong-kong",
+    "tipo": "vacante",
+    "rutas": [
+      "empleabilidad"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Tardes",
+    "horas_semana": 36,
+    "costo": "Sueldo",
+    "sueldo": "$7,200 al mes",
+    "ubicacion": "Los Mochis",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": "2026-12-31",
+    "requisitos": [
+      {
+        "campo": "edad",
+        "op": ">=",
+        "valor": "18 a 24",
+        "duro": true,
+        "label": "Ser mayor de 18"
+      },
+      {
+        "campo": "escolaridad",
+        "op": ">=",
+        "valor": "Secundaria",
+        "duro": true,
+        "label": "Secundaria terminada"
+      },
+      {
+        "campo": "documentos",
+        "op": "contains",
+        "valor": [
+          "INE"
+        ],
+        "duro": true,
+        "label": "INE vigente"
+      }
+    ],
+    "descripcion": "Atender a clientes, cobrar en caja y acomodar pan y pasteles en vitrina.",
+    "url_accion": "#",
+    "verificado_el": "2026-11",
+    "estado_revision": "aprobada",
+    "alerta_ia": null,
+    "etiquetas": {
+      "pide": [
+        "edad",
+        "escolaridad",
+        "documentos"
+      ],
+      "da": [],
+      "temas": [
+        "ventas",
+        "atención al cliente",
+        "panadería"
+      ]
+    }
+  },
+  {
+    "id": "v-hk-ayudante",
+    "titulo": "Ayudante de panadería",
+    "proveedor": "Hong Kong · Pastelería y Panificadora",
+    "empresa": "hong-kong",
+    "tipo": "vacante",
+    "rutas": [
+      "empleabilidad"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Mañanas",
+    "horas_semana": 40,
+    "costo": "Sueldo",
+    "sueldo": "$7,800 al mes",
+    "ubicacion": "Los Mochis",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": "2026-12-31",
+    "requisitos": [
+      {
+        "campo": "edad",
+        "op": ">=",
+        "valor": "18 a 24",
+        "duro": true,
+        "label": "Ser mayor de 18"
+      },
+      {
+        "campo": "documentos",
+        "op": "contains",
+        "valor": [
+          "INE"
+        ],
+        "duro": true,
+        "label": "INE vigente"
+      }
+    ],
+    "descripcion": "Apoyo en la elaboración de pan dulce y bolillo desde temprano. Te enseñamos en el obrador.",
+    "url_accion": "#",
+    "verificado_el": "2026-11",
+    "estado_revision": "aprobada",
+    "alerta_ia": null,
+    "etiquetas": {
+      "pide": [
+        "edad",
+        "documentos"
+      ],
+      "da": [],
+      "temas": [
+        "panadería",
+        "alimentos"
+      ]
+    }
+  },
+  {
+    "id": "v-hk-decoradora",
+    "titulo": "Decoradora de pasteles",
+    "proveedor": "Hong Kong · Pastelería y Panificadora",
+    "empresa": "hong-kong",
+    "tipo": "vacante",
+    "rutas": [
+      "empleabilidad"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Mañanas",
+    "horas_semana": 30,
+    "costo": "Sueldo",
+    "sueldo": "$8,500 al mes",
+    "ubicacion": "Los Mochis",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": "2026-12-31",
+    "requisitos": [
+      {
+        "campo": "edad",
+        "op": ">=",
+        "valor": "18 a 24",
+        "duro": true,
+        "label": "Ser mayor de 18"
+      },
+      {
+        "campo": "tiene_experiencia",
+        "op": "==",
+        "valor": "Sí",
+        "duro": false,
+        "label": "Experiencia decorando (deseable)"
+      }
+    ],
+    "descripcion": "Decorar pasteles para fiestas y pedidos especiales con betún, fondant y letras.",
+    "url_accion": "#",
+    "verificado_el": "2026-11",
+    "estado_revision": "aprobada",
+    "alerta_ia": null,
+    "etiquetas": {
+      "pide": [
+        "edad",
+        "tiene_experiencia"
+      ],
+      "da": [],
+      "temas": [
+        "repostería",
+        "panadería"
+      ]
+    }
+  },
+  {
+    "id": "c-hk-reposteria",
+    "titulo": "Taller de repostería y decoración",
+    "proveedor": "Hong Kong · Pastelería y Panificadora",
+    "tipo": "curso",
+    "rutas": [
+      "capacitacion",
+      "emprendimiento",
+      "empleabilidad"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Fines de semana",
+    "horas_semana": 4,
+    "costo": "Gratis",
+    "ubicacion": "Los Mochis",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": "2026-12-31",
+    "requisitos": [],
+    "descripcion": "Aprende pan dulce y decoración básica de pasteles en el obrador de Hong Kong. 6 sábados. Ideal para vender desde casa.",
+    "url_accion": "#",
+    "verificado_el": "2026-11",
+    "estado_revision": "aprobada",
+    "alerta_ia": null,
+    "etiquetas": {
+      "pide": [],
+      "da": [
+        "tiene_experiencia"
+      ],
+      "temas": [
+        "repostería",
+        "panadería",
+        "negocio"
+      ]
+    },
+    "empresa": "hong-kong"
+  },
+  {
+    "id": "v-lm-cocinera",
+    "titulo": "Cocinera de comida sinaloense",
+    "proveedor": "Linda Morena · Cocina tradicional sinaloense",
+    "empresa": "linda-morena",
+    "tipo": "vacante",
+    "rutas": [
+      "empleabilidad"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Mañanas",
+    "horas_semana": 40,
+    "costo": "Sueldo",
+    "sueldo": "$8,800 al mes",
+    "ubicacion": "Los Mochis",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": "2026-12-31",
+    "requisitos": [
+      {
+        "campo": "edad",
+        "op": ">=",
+        "valor": "18 a 24",
+        "duro": true,
+        "label": "Ser mayor de 18"
+      },
+      {
+        "campo": "documentos",
+        "op": "contains",
+        "valor": [
+          "INE"
+        ],
+        "duro": true,
+        "label": "INE vigente"
+      },
+      {
+        "campo": "habilidades",
+        "op": "contains",
+        "valor": [
+          "Cocina"
+        ],
+        "duro": true,
+        "label": "Saber cocinar"
+      }
+    ],
+    "descripcion": "Preparar platillos tradicionales: chilorio, machaca, cochi y frijoles puercos.",
+    "url_accion": "#",
+    "verificado_el": "2026-11",
+    "estado_revision": "aprobada",
+    "alerta_ia": null,
+    "etiquetas": {
+      "pide": [
+        "edad",
+        "documentos",
+        "habilidades"
+      ],
+      "da": [],
+      "temas": [
+        "cocina",
+        "alimentos"
+      ]
+    }
+  },
+  {
+    "id": "v-lm-ayudante",
+    "titulo": "Ayudante de cocina",
+    "proveedor": "Linda Morena · Cocina tradicional sinaloense",
+    "empresa": "linda-morena",
+    "tipo": "vacante",
+    "rutas": [
+      "empleabilidad"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Tardes",
+    "horas_semana": 36,
+    "costo": "Sueldo",
+    "sueldo": "$7,000 al mes",
+    "ubicacion": "Los Mochis",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": "2026-12-31",
+    "requisitos": [
+      {
+        "campo": "edad",
+        "op": ">=",
+        "valor": "18 a 24",
+        "duro": true,
+        "label": "Ser mayor de 18"
+      },
+      {
+        "campo": "documentos",
+        "op": "contains",
+        "valor": [
+          "INE"
+        ],
+        "duro": true,
+        "label": "INE vigente"
+      }
+    ],
+    "descripcion": "Picar, lavar y apoyar a las cocineras. Comida incluida en tu turno.",
+    "url_accion": "#",
+    "verificado_el": "2026-11",
+    "estado_revision": "aprobada",
+    "alerta_ia": null,
+    "etiquetas": {
+      "pide": [
+        "edad",
+        "documentos"
+      ],
+      "da": [],
+      "temas": [
+        "cocina",
+        "alimentos"
+      ]
+    }
+  },
+  {
+    "id": "v-lm-mesera",
+    "titulo": "Mesera",
+    "proveedor": "Linda Morena · Cocina tradicional sinaloense",
+    "empresa": "linda-morena",
+    "tipo": "vacante",
+    "rutas": [
+      "empleabilidad"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Fines de semana",
+    "horas_semana": 20,
+    "costo": "Sueldo",
+    "sueldo": "$3,500 al mes + propinas",
+    "ubicacion": "Los Mochis",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": "2026-12-31",
+    "requisitos": [
+      {
+        "campo": "edad",
+        "op": ">=",
+        "valor": "18 a 24",
+        "duro": true,
+        "label": "Ser mayor de 18"
+      }
+    ],
+    "descripcion": "Atender mesas los fines de semana. Buen ambiente y propinas.",
+    "url_accion": "#",
+    "verificado_el": "2026-11",
+    "estado_revision": "aprobada",
+    "alerta_ia": null,
+    "etiquetas": {
+      "pide": [
+        "edad"
+      ],
+      "da": [],
+      "temas": [
+        "atención al cliente",
+        "alimentos"
+      ]
+    }
+  },
+  {
+    "id": "c-lm-cocina-tradicional",
+    "titulo": "Cocina tradicional para emprender",
+    "proveedor": "Linda Morena · Cocina tradicional sinaloense",
+    "tipo": "curso",
+    "rutas": [
+      "capacitacion",
+      "emprendimiento"
+    ],
+    "modalidad": "Presencial",
+    "horario": "Tardes",
+    "horas_semana": 4,
+    "costo": "Gratis",
+    "ubicacion": "Los Mochis",
+    "municipios": [
+      "Ahome"
+    ],
+    "fecha_cierre": "2026-12-31",
+    "requisitos": [],
+    "descripcion": "Aprende recetas sinaloenses, costos y cómo vender comida desde casa. 4 semanas, 2 tardes por semana.",
+    "url_accion": "#",
+    "verificado_el": "2026-11",
+    "estado_revision": "aprobada",
+    "alerta_ia": null,
+    "etiquetas": {
+      "pide": [],
+      "da": [
+        "tiene_experiencia"
+      ],
+      "temas": [
+        "cocina",
+        "negocio",
+        "alimentos"
+      ]
+    },
+    "empresa": "linda-morena"
   }
 ]

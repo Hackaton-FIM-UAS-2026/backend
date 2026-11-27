@@ -73,3 +73,19 @@ class TestPrivacidadLineaDeTiempo(unittest.TestCase):
     def test_asignar_ambas_no_es_general(self):
         from app.modulos.expediente.router import AREA_EVENTO
         self.assertNotIn("general", AREA_EVENTO.values())
+
+
+class TestResumenArea(unittest.TestCase):
+    def test_psicologia_solo_cuenta_lo_suyo(self):
+        from datetime import date
+        from app.modulos.expediente.resumen import resumen_area
+        hoy = date(2026, 11, 27)
+        casos = [
+            {"area_asignada": "psicologica", "estado": "asignada", "urgencia": "inmediata", "created_at": "2026-11-26T10:00:00+00:00"},
+            {"area_asignada": "ambas", "estado": "en atención", "urgencia": "pronta", "created_at": "2026-11-01T10:00:00+00:00"},
+            {"area_asignada": "juridica", "estado": "asignada", "urgencia": "inmediata", "created_at": "2026-11-26T10:00:00+00:00"},
+            {"area_asignada": "psicologica", "estado": "cerrada", "urgencia": "pronta", "created_at": "2026-11-10T10:00:00+00:00"},
+        ]
+        visitas = [{"modulo": "psicologia", "fecha": "2026-11-27"}, {"modulo": "juridico", "fecha": "2026-11-27"}]
+        r = resumen_area("especialista_psicologica", casos, visitas, hoy)
+        self.assertEqual((r["abiertos"], r["urgentes"], r["nuevos_semana"], r["cerrados_mes"], r["visitas_hoy"]), (2, 1, 1, 1, 1))

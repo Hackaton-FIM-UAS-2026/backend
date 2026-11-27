@@ -182,10 +182,24 @@ def recomendaciones(token: str, usuaria_id: str) -> dict:
             "con_embeddings": bool(sims)}
 
 
-def preguntas_para(faltantes: list[str], recurso: dict) -> list[dict]:
-    """1 a 3 preguntas, cada una amarrada a un campo del diccionario."""
-    base = [{"campo": c, "pregunta": diccionario.CAMPOS[c]["pregunta"], "opciones": diccionario.CAMPOS[c]["opciones"]}
-            for c in faltantes if c in diccionario.CAMPOS and "opciones" in diccionario.CAMPOS[c]][:3]
+# Preguntas que vienen al caso según el tipo de opción, además de lo que pide el recurso
+EXTRA_POR_TIPO = {
+    "vacante": ["experiencia_anios", "inicio", "transporte"],
+    "curso": ["nivel_computacion", "intereses"],
+    "beca": ["intereses", "inicio"],
+    "apoyo": ["intereses"],
+    "financiamiento": ["intereses"],
+}
+
+
+def preguntas_para(faltantes: list[str], recurso: dict, vals: dict | None = None) -> list[dict]:
+    """Hasta 5 preguntas, cada una amarrada a un campo del diccionario: primero lo que pide el
+    recurso y después lo que viene al caso para ese tipo de opción (si todavía no lo sabemos)."""
+    vals = vals or {}
+    extra = [c for c in EXTRA_POR_TIPO.get(recurso.get("tipo"), []) if c not in vals and c not in faltantes]
+    base = [{"campo": c, "pregunta": diccionario.CAMPOS[c]["pregunta"], "opciones": diccionario.CAMPOS[c]["opciones"],
+             "tipo": diccionario.CAMPOS[c]["tipo"]}
+            for c in list(dict.fromkeys(faltantes + extra)) if c in diccionario.CAMPOS and "opciones" in diccionario.CAMPOS[c]][:5]
     if not base:
         return []
     return claude.preguntas_faltantes(base, recurso) or base

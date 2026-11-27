@@ -205,3 +205,69 @@ def alta(body: AltaIn, s: Sesion = Depends(TS)):
                                            "area": "general", "texto": "Se abrió su expediente en SEMujeres (llegó en persona)"}).execute()
     bitacora(s.user_id, s.rol, "crear", "perfiles", None, uid)
     return {"usuaria_id": uid, "existente": False}
+
+
+# ---------------------------------------------------------------- resumen por área
+@router.get("/resumen")
+def resumen(s: Sesion = Depends(CASOS)):
+    """Métricas solo del área de quien pregunta (Trabajo Social ve todas las solicitudes)."""
+    from datetime import date
+    from .resumen import resumen_area
+    sb = servicio()
+    casos = sb.table("canalizaciones").select("folio,usuaria_id,area_asignada,estado,urgencia,created_at").execute().data
+    visitas = sb.table("visitas").select("modulo,fecha").eq("fecha", date.today().isoformat()).execute().data
+    r = resumen_area(s.rol, casos, visitas, date.today())
+    mios = [c for c in casos if c["estado"] not in ("cerrada",) and (s.rol not in ESPECIALIDAD or c["area_asignada"] in ESPECIALIDAD[s.rol])]
+    mios.sort(key=lambda c: (ORDEN_URG.get(c["urgencia"], 9), c["created_at"]))
+    per = _nombres(list({c["usuaria_id"] for c in mios[:6]}))
+    r["recientes"] = [{"folio": c["folio"], "usuaria_id": c["usuaria_id"], "nombre": (per.get(c["usuaria_id"]) or {}).get("nombre") or "Sin nombre",
+                       "estado": c["estado"], "urgencia": c["urgencia"], "hace": hace(c["created_at"])} for c in mios[:6]]
+    bitacora(s.user_id, s.rol, "listar", "canalizaciones")
+    return r
+
+
+# ---------------------------------------------------------------- derivar (Trabajo Social)
+class DerivarIn(BaseModel):
+    area: Literal["juridica", "psicologica", "ambas", "economico"]
+    valoracion: str = Field(min_length=10, max_length=1500)
+    urgencia: Literal["inmediata", "pronta", "informativa"] = "pronta"
+
+
+@router.post("/expedientes/{usuaria_id}/derivar")
+def derivar(usuaria_id: str, body: DerivarIn, s: Sesion = Depends(TS)):
+    """Después de valorar su situación, Trabajo Social decide a qué departamento va el expediente."""
+    sb = servicio()
+    if not sb.table("perfiles").select("usuaria_id").eq("usuaria_id", usuaria_id).limit(1).execute().data:
+        raise HTTPException(404, "Expediente no encontrado")
+    hoy = sv.fecha_corta(sv.ahora_iso())
+    # La valoración es nota de Trabajo Social (cifrada, solo la ve su área)
+    sb.table("expediente_eventos").insert({"usuaria_id": usuaria_id, "version": 0, "fuente": "nota", "autor": s.user_id,
+                                           "area": "trabajo_social", "texto": cifrar(f"Valoración: {body.valoracion.strip()}")}).execute()
+    if body.area == "economico":
+        sb.table("perfiles").update({"estado_seguimiento": "Nueva"}).eq("usuaria_id", usuaria_id).execute()
+        sb.table("expediente_eventos").insert({"usuaria_id": usuaria_id, "version": 0, "fuente": "personal_semujeres", "autor": s.user_id,
+                                               "area": "economico", "texto": "Trabajo Social la envió a Empoderamiento económico",
+                                               "texto_publico": f"En seguimiento de Empoderamiento económico desde {hoy}"}).execute()
+        bitacora(s.user_id, s.rol, "actualizar", "perfiles", None, usuaria_id)
+        return {"area": "economico"}
+    nueva = sb.table("canalizaciones").select("id,folio").eq("usuaria_id", usuaria_id).eq("estado", "nueva").limit(1).execute().data
+    if nueva:
+        folio = nueva[0]["folio"]
+        sb.table("canalizaciones").update({"estado": "asignada", "area_asignada": body.area, "asignada_por": s.user_id,
+                                           "urgencia": body.urgencia}).eq("id", nueva[0]["id"]).execute()
+    else:
+        folio = sb.table("canalizaciones").insert({"usuaria_id": usuaria_id, "tipo": body.area, "area_asignada": body.area,
+                                                   "estado": "asignada", "origen": "personal", "urgencia": body.urgencia,
+                                                   "asignada_por": s.user_id}).execute().data[0]["folio"]
+    # Si llegó en persona no hay resumen: la especialista recibe la valoración como contexto
+    if not sb.table("expedientes_sensibles").select("usuaria_id").eq("usuaria_id", usuaria_id).execute().data:
+        tel = (sb.table("perfiles").select("telefono").eq("usuaria_id", usuaria_id).limit(1).execute().data or [{}])[0].get("telefono")
+        sb.table("expedientes_sensibles").insert({"usuaria_id": usuaria_id, "consentimiento_at": sv.ahora_iso(),
+            "datos_cifrados": cifrar({"tipo": body.area, "resumen": body.valoracion.strip(),
+                                      "contacto": {"medio": "Llamada" if tel else "En persona", "horario": "", "mensaje": False}})}).execute()
+    sb.table("expediente_eventos").insert({
+        "usuaria_id": usuaria_id, "version": 0, "fuente": "personal_semujeres", "autor": s.user_id,
+        "area": AREA_EVENTO[body.area], "texto": f"Trabajo Social valoró y envió el expediente a atención {AREA_TEXTO[body.area]} ({folio})",
+        "texto_publico": f"En atención {AREA_TEXTO[body.area]} desde {hoy}"}).execute()
+    bitacora(s.user_id, s.rol, "actualizar", "canalizaciones", folio, usuaria_id)
+    return {"area": body.area, "folio": folio}

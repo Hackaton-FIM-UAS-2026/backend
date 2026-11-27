@@ -61,15 +61,19 @@ def preguntas_faltantes(faltantes: list[dict], contexto: dict) -> list[dict] | N
     """
     campos = [f["campo"] for f in faltantes]
     out = usar_herramienta(
-        system="Generas de 1 a 3 preguntas para saber si la usuaria cumple los requisitos de un recurso. "
-               "Cada pregunta corresponde a exactamente un campo de la lista. Máximo 12 palabras por pregunta.",
+        system="Platicas con una mujer de Ahome sobre una opción (vacante, curso, beca o apoyo) que le interesa. "
+               "Reescribe cada pregunta para que suene cálida y natural, de tú, conectada con esa opción "
+               "(por ejemplo: «Esta vacante es en la mañana, ¿cuándo podrías empezar?»). Ordénalas de la más "
+               "importante para saber si cumple a la menos importante. Cada pregunta corresponde a exactamente "
+               "un campo de la lista y DEBE poder contestarse con las opciones de ese campo (no cambies el sentido: "
+               "si las opciones son tiempos, pregunta por tiempo). Máximo 18 palabras por pregunta.",
         mensaje=json.dumps({"recurso": contexto.get("titulo"), "campos_faltantes": faltantes}, ensure_ascii=False),
         nombre="hacer_preguntas",
         descripcion="Regresa las preguntas para los campos faltantes.",
         schema={
             "type": "object",
             "properties": {"preguntas": {
-                "type": "array", "minItems": 1, "maxItems": 3,
+                "type": "array", "minItems": 1, "maxItems": 5,
                 "items": {"type": "object", "required": ["campo", "pregunta"], "properties": {
                     "campo": {"type": "string", "enum": campos},
                     "pregunta": {"type": "string", "maxLength": 120},

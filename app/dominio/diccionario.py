@@ -46,6 +46,22 @@ ENTREVISTA = [
      "opciones": ["Nada", "Básico", "Intermedio"]},
     {"campo": "tiene_experiencia", "etiqueta": "Experiencia laboral", "pregunta": "¿Has trabajado antes con un patrón o en una empresa?", "tipo": "unica",
      "opciones": ["Sí", "No"]},
+    # Entrevista dinámica (Completar mi perfil): la IA elige el orden y el tono; las opciones son fijas.
+    {"campo": "experiencia_anios", "etiqueta": "Años de experiencia", "pregunta": "¿Cuánto tiempo has trabajado en total?", "tipo": "unica", "ordinal": True,
+     "opciones": ["Nunca he trabajado", "Menos de 1 año", "1 a 3 años", "Más de 3 años"]},
+    {"campo": "nivel_computacion", "etiqueta": "Computación", "pregunta": "¿Qué tanto usas la computadora o el celular?", "tipo": "unica", "ordinal": True,
+     "opciones": ["Casi nada", "Uso WhatsApp y redes", "Uso Word o Excel"]},
+    {"campo": "intereses", "etiqueta": "Intereses", "pregunta": "¿En qué te gustaría trabajar o aprender?", "tipo": "multiple",
+     "opciones": ["Cocina y alimentos", "Belleza", "Costura", "Ventas y atención", "Oficina y computación",
+                  "Cuidado de personas", "Educación", "Limpieza", "Tener mi propio negocio"]},
+    {"campo": "transporte", "etiqueta": "Transporte", "pregunta": "¿Cómo te mueves por la ciudad?", "tipo": "unica",
+     "opciones": ["Camino o uso camión", "Tengo bicicleta o moto", "Tengo carro"]},
+    {"campo": "inicio", "etiqueta": "Cuándo puede empezar", "pregunta": "¿Cuándo podrías empezar?", "tipo": "unica",
+     "opciones": ["Ya", "En un mes", "Más adelante"]},
+    {"campo": "ingles", "etiqueta": "Inglés", "pregunta": "¿Hablas o entiendes inglés?", "tipo": "unica", "ordinal": True,
+     "opciones": ["Nada", "Un poco", "Bien"]},
+    {"campo": "apoyo_cuidados", "etiqueta": "Apoyo con los cuidados", "pregunta": "¿Alguien te ayuda a cuidar a quien tienes a tu cargo?", "tipo": "unica",
+     "opciones": ["Sí, alguien me ayuda", "A veces", "No tengo quién me ayude"]},
 ]
 
 # Campos de texto libre (no cuentan en "Mi avance"): el que registra el personal

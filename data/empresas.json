@@ -50,6 +50,36 @@
       "telefono": "668 555 0205",
       "estado": "pendiente",
       "logo_url": null
+    },
+    {
+      "alias": "colegio-latinoamericano",
+      "nombre": "Colegio Latinoamericano",
+      "rfc": "CLA950815QR1",
+      "giro": "Escuela primaria",
+      "contacto_nombre": "Dirección escolar",
+      "telefono": "668 555 0206",
+      "estado": "aprobada",
+      "logo_url": "/aliadas/colegio-latinoamericano.svg"
+    },
+    {
+      "alias": "hong-kong",
+      "nombre": "Hong Kong · Pastelería y Panificadora",
+      "rfc": "HKP880420ST2",
+      "giro": "Pastelería y panadería",
+      "contacto_nombre": "Gerencia de tienda",
+      "telefono": "668 555 0207",
+      "estado": "aprobada",
+      "logo_url": "/aliadas/hong-kong.svg"
+    },
+    {
+      "alias": "linda-morena",
+      "nombre": "Linda Morena · Cocina tradicional sinaloense",
+      "rfc": "LMC170310UV3",
+      "giro": "Restaurante de cocina sinaloense",
+      "contacto_nombre": "Encargada de cocina",
+      "telefono": "668 555 0208",
+      "estado": "aprobada",
+      "logo_url": "/aliadas/linda-morena.svg"
     }
   ]
 }
